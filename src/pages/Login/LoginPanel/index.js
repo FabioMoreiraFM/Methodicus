@@ -1,16 +1,16 @@
 import { Component } from "react";
-import {Grid, TextField} from '@material-ui/core'
-import PasswordInput from '../PasswordInput'
+import {Grid} from '@material-ui/core'
+import LoginInput from '../LoginInput'
 
 export default class LoginPanel extends Component {
     render() {
         return (
             <Grid item container direction="column" spacing={3}>
                 <Grid item>
-                    <TextField fullWidth id="outlined-basic" label="Usuário" variant="outlined" />                                        
+                    <LoginInput fullWidth id="outlined-basic" placeholder="Usuário" variant="outlined" />                                        
                 </Grid>
                 <Grid item>
-                    <PasswordInput placeholder="Senha" />                                        
+                    <LoginInput password placeholder="Senha" />                                        
                 </Grid>
             </Grid>
         )

@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .react-tabs__tab--selected span{
     color: #3949AB;
     border-bottom: 3px solid #3949AB;    
+}
+
+@media screen and (max-width: 600px) {
+  .react-tabs__tab--selected span{
+    color: #668FE1;
+    border-bottom: 3px solid #668FE1; 
+  }
 }
 
 .react-tabs__tab-panel.react-tabs__tab-panel--selected {
