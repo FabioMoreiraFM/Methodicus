@@ -52,7 +52,7 @@ class Login extends Component {
                             </Tabs>
                         </Grid>
                         <Grid item>
-                            <LoginButton fullWidth variant="outlined">ENTRAR</LoginButton>
+                            <LoginButton arial-label="Entrar" fullWidth variant="outlined">ENTRAR</LoginButton>
                         </Grid>
                     </Grid>
                 </LoginContainer>

@@ -7,13 +7,13 @@ export default class RecoverPasswordPanel extends Component{
         return (
             <Grid item container direction="column" spacing={3}>
                 <Grid item>
-                    <LoginInput fullWidth id="outlined-basic" placeholder="Usuário" variant="outlined" />                                        
+                    <LoginInput id="recoverUser" fullWidth placeholder="Usuário" variant="outlined" />                                        
                 </Grid>
                 <Grid item>
-                    <LoginInput password placeholder="Senha" />                                        
+                    <LoginInput id="recoverPassword" password placeholder="Senha" />                                        
                 </Grid>
                 <Grid item>
-                    <LoginInput password placeholder="Confirmar Senha" />                                        
+                    <LoginInput id="recoverPasswordConfirm" password placeholder="Confirmar Senha" />                                        
                 </Grid>
             </Grid>            
         )

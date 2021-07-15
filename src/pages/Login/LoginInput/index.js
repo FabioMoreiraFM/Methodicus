@@ -47,7 +47,8 @@ class LoginInput extends Component {
 
     state = {
         icon: faEyeSlash,
-        type: "password"
+        type: "password",
+        ariaLabel: "Mostrar Senha"
     }
 
     componentDidUpdate() {
@@ -56,9 +57,9 @@ class LoginInput extends Component {
 
     handleChangeEyeState = () => {
         if (this.state.type === "password") {
-            this.setState({type: "text", icon: faEye})
+            this.setState({type: "text", icon: faEye, ariaLabel: "Ocultar Senha"})
         } else {
-            this.setState({type: "password", icon: faEyeSlash})
+            this.setState({type: "password", icon: faEyeSlash, ariaLabel: "Mostrar Senha"})
         }            
     }
 
@@ -67,17 +68,17 @@ class LoginInput extends Component {
 
         return (
             <TextField 
-                autoFocus={this.state.autoFocus}
+                id={this.props.id}
                 className={classes.root}
                 inputRef={this.textInput}
-                fullWidth id="outlined-basic" 
+                fullWidth
                 label={this.props.placeholder} 
                 variant="outlined" 
                 type={this.props.password ? this.state.type : "text"}
                 InputProps={this.props.password && {
                     endAdornment: (
                         <InputAdornment position="start">
-                            <IconButton onClick={this.handleChangeEyeState}>
+                            <IconButton onClick={this.handleChangeEyeState} arial-label={this.state.ariaLabel}>
                                 <FontAwesomeIcon icon={this.state.icon} />
                             </IconButton>
                         </InputAdornment>

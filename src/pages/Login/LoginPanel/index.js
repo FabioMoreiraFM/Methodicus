@@ -7,10 +7,10 @@ export default class LoginPanel extends Component {
         return (
             <Grid item container direction="column" spacing={3}>
                 <Grid item>
-                    <LoginInput fullWidth id="outlined-basic" placeholder="Usuário" variant="outlined" />                                        
+                    <LoginInput id="loginUser" fullWidth placeholder="Usuário" variant="outlined" />                                        
                 </Grid>
                 <Grid item>
-                    <LoginInput password placeholder="Senha" />                                        
+                    <LoginInput id="loginPassword" password placeholder="Senha" />                                        
                 </Grid>
             </Grid>
         )

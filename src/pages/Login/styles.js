@@ -24,6 +24,7 @@ export const LoginContainer = styled(Grid)`
 `
 export const Logo = styled.img`
     height: 8rem;   
+    width: 8rem;
     ${theme.breakpoints.down("xs")} {
         margin-top: 1rem;
         height: 6rem;
