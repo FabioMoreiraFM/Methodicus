@@ -2,7 +2,7 @@ import { Component } from 'react'
 import { Grid, Hidden} from '@material-ui/core'
 import { TabPanel, Tabs } from 'react-tabs'
 
-import { GridFundo, LoginContainer, Logo, TradeMark, LoginTitle, LoginButton, LoginTab, TabLabel, LoginTabList } from './styles'
+import { GridFundo, LoginContainer, Logo, TradeMark, LoginTitle, LoginTab, TabLabel, LoginTabList } from './styles'
 import img from 'assets/logo.png'
 import LoginPanel from './LoginPanel'
 import RecoverPasswordPanel from './RecoverPasswordPanel'
@@ -41,7 +41,7 @@ class Login extends Component {
                                     </LoginTab>
                                 </LoginTabList>
                                 <TabPanel>
-                                    <LoginPanel />
+                                    <LoginPanel/>
                                 </TabPanel>
                                 <TabPanel>
                                     <RecoverPasswordPanel />
@@ -50,9 +50,6 @@ class Login extends Component {
                                     <RecoverPasswordPanel />
                                 </TabPanel>
                             </Tabs>
-                        </Grid>
-                        <Grid item>
-                            <LoginButton arial-label="Entrar" fullWidth variant="outlined">ENTRAR</LoginButton>
                         </Grid>
                     </Grid>
                 </LoginContainer>

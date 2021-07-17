@@ -34,6 +34,9 @@ const styles = theme => ({
             },
             "& .MuiIconButton-root": {
                 color: "white"
+            },
+            "& .MuiFormLabel-root.Mui-error": {
+                color: "red"
             }
         }
     }
@@ -51,8 +54,10 @@ class LoginInput extends Component {
         ariaLabel: "Mostrar Senha"
     }
 
-    componentDidUpdate() {
-        this.textInput.current.focus()
+    componentDidUpdate(_, prevState) {
+        if (prevState.icon !== this.state.icon) {
+            this.textInput.current.focus()
+        }
     }
 
     handleChangeEyeState = () => {
@@ -75,6 +80,10 @@ class LoginInput extends Component {
                 label={this.props.placeholder} 
                 variant="outlined" 
                 type={this.props.password ? this.state.type : "text"}
+                onChange={this.props.onChange}
+                onClick={this.props.onClick}
+                helperText={this.props.helperText}
+                error={this.props.error}
                 InputProps={this.props.password && {
                     endAdornment: (
                         <InputAdornment position="start">

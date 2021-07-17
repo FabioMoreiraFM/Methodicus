@@ -1,4 +1,5 @@
 import {Grid, Button} from '@material-ui/core'
+import {Alert} from '@material-ui/lab';
 import {Tab, TabList} from 'react-tabs'
 import styled from 'styled-components'
 
@@ -17,6 +18,7 @@ export const GridFundo = styled(Grid)`
 export const LoginContainer = styled(Grid)`
     background-color: white;
     padding: 2rem 5rem;
+    margin-bottom: 2rem;
     ${theme.breakpoints.down("xs")} {
         background-color: ${black};
         padding: 0 1rem;
@@ -28,6 +30,7 @@ export const Logo = styled.img`
     ${theme.breakpoints.down("xs")} {
         margin-top: 1rem;
         height: 6rem;
+        width: 6rem;
     } 
 `
 export const TradeMark = styled.h1`
@@ -100,4 +103,8 @@ export const LoginTabList = styled(TabList)`
         margin: 1rem auto 1rem auto;
         max-width: 21rem;
     }
+`
+
+export const SuccessAlert = styled(Alert)`
+    max-width: 31rem;
 `
