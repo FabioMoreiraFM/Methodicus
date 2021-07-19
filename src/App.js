@@ -1,5 +1,6 @@
-import Login from "pages/Login";
 import { CssBaseline, ThemeProvider} from "@material-ui/core";
+
+import Routes from "routes";
 import theme from 'config/theme';
 
 import './App.css'
@@ -9,7 +10,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Login />
+        <Routes />
       </ThemeProvider>
     </>
   );
