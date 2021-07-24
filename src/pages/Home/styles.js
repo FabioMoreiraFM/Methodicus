@@ -8,6 +8,7 @@ export const RightBackground = styled.img`
     height: 40rem;   
     width: 40rem;
     opacity: 0.25;
+    z-index: -1;
     ${theme.breakpoints.down("xs")} {        
         height: 20rem;
         width: 20rem;
@@ -23,6 +24,7 @@ export const LeftBackground = styled.img`
     height: 23rem;   
     width: 35rem;
     opacity: 0.34;
+    z-index: -1;
     ${theme.breakpoints.down("xs")} {        
         display: none;
     } 
