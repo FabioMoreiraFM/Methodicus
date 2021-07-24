@@ -1,3 +1,4 @@
+import theme from 'config/theme';
 import styled from 'styled-components'
 import { AppBar} from '@material-ui/core';
 
@@ -19,4 +20,10 @@ export const Logo = styled.img`
 
 export const StyledAppBar = styled(AppBar)`
     background: #263388; 
+    ${theme.breakpoints.down("xs")} {
+        max-height: 3.5rem;
+        position: fixed;
+        z-index: 1301;
+        box-shadow: none;
+    }
 `

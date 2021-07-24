@@ -16,10 +16,12 @@ const HeaderButton = ({popover: Popover, ...props}) => {
 
     return (
         <>
-            <HeaderIconButton aria-owns={open ? 'mouse-over-popover' : undefined} aria-haspopup="true" onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
+            <HeaderIconButton aria-owns={open ? 'mouse-over-popover' : undefined} aria-haspopup="true" onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose} onClick={props.onClick}>
                 {props.children}
             </HeaderIconButton>
-            <Popover open={open} anchorEl={anchorEl} onExit={handlePopoverClose}/>
+            { Popover && 
+              <Popover open={open} anchorEl={anchorEl} onExit={handlePopoverClose}/>
+            }
         </>
     )
 }
