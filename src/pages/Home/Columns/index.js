@@ -3,6 +3,7 @@ import Column from './Column'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { Container } from './style';
+import NewColumn from './NewColumn';
 
 const initialData = {
     tasks: {
@@ -29,6 +30,28 @@ const initialData = {
 class Columns extends Component {
     state = initialData
     
+    onClickCreateColumn = () => {
+        const newColumn = {
+            id: ''+Date.now(),
+            title: 'New Column',
+            taskIds: []
+        }
+
+        let newColumnOrder = Array.from(this.state.columnOrder)
+        newColumnOrder.push(newColumn.id)
+
+        const newState = {
+            ...this.state,
+            columns: {
+                ...this.state.columns,
+                [newColumn.id]: newColumn
+            },
+            columnOrder: newColumnOrder
+        }
+
+        this.setState(newState)
+    }
+
     onDragEnd = result => {
         const {destination, source, draggableId, type} = result;
 
@@ -123,6 +146,7 @@ class Columns extends Component {
                                 return <Column key={column.id} column={column} tasks={tasks} index={index} />
                             })}
                             {provided.placeholder}
+                            <NewColumn onClickCreateColumn={this.onClickCreateColumn} />
                         </Container>
                     )}
                 </Droppable>
