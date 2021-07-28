@@ -8,6 +8,8 @@ export const Container = styled.div`
     background-color: #F6F7F9;
     width: 220px;
     height: 3rem;
+
+    box-shadow: 0px 3px 6px #00000029;
 `
 
 export const Title = styled.h3`
@@ -25,6 +27,6 @@ export const NewColumnClickable = styled(Link)`
     padding-left: 1rem;
 
     &:hover {
-        opacity: 0.5;
+        background-color: lightgrey;
     }
 `

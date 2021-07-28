@@ -1,11 +1,14 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
     margin: 8px;
+    
     border: 1px solid lightgrey;
-    border-radius: 2px;
+    
     background-color: #F6F7F9;
     width: 220px;
+    box-shadow: 0px 3px 6px #00000029;
 
     display: flex;
     flex-direction: column;
@@ -21,4 +24,18 @@ export const TaskList = styled.div`
     transition: background-color 0.2s ease;
     flex-grow: 1;
     min-height: 100px;
+`
+
+export const NewTaskContainer = styled(Link)`
+    height: 2.5rem;
+    text-decoration: none;
+    color: black;
+
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+
+    &:hover {
+        background-color: lightgrey;
+    }
 `

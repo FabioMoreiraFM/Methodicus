@@ -30,6 +30,33 @@ const initialData = {
 class Columns extends Component {
     state = initialData
     
+    onClickNewTask = (columnId) => {
+        const newTask = {
+            id: ''+Date.now(),
+            content: "New Task"
+        }
+
+        const newColumns = {...this.state.columns[columnId]}
+        newColumns.taskIds = Array.from(this.state.columns[columnId].taskIds)
+        newColumns.taskIds.push(newTask.id)
+
+        const newState = {
+            ...this.state,
+            tasks: {
+                ...this.state.tasks,
+                [newTask.id]: newTask
+            },
+            columns: {
+                ...this.state.columns,
+                [columnId]: newColumns
+            }
+        }
+
+        console.log(newState)
+
+        this.setState(newState)
+    }
+
     onClickCreateColumn = () => {
         const newColumn = {
             id: ''+Date.now(),
@@ -143,7 +170,7 @@ class Columns extends Component {
                                 const column = this.state.columns[columnId]
                                 const tasks = column.taskIds.map(taskId => this.state.tasks[taskId])
                     
-                                return <Column key={column.id} column={column} tasks={tasks} index={index} />
+                                return <Column key={column.id} column={column} tasks={tasks} index={index} onClickNewTask={this.onClickNewTask} />
                             })}
                             {provided.placeholder}
                             <NewColumn onClickCreateColumn={this.onClickCreateColumn} />

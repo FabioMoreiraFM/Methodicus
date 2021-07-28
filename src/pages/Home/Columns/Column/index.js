@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import { Container, TaskList, Title } from './style';
+import { Container, TaskList, Title, NewTaskContainer } from './style';
 import Task from './Task';
 
 class Column extends Component {
@@ -29,6 +29,9 @@ class Column extends Component {
                                 )
                             }
                         </Droppable>
+                        <NewTaskContainer to="" onClick={() => this.props.onClickNewTask(this.props.column.id)}>
+                            + Nova tarefa
+                        </NewTaskContainer>
                     </Container>
                 )}
             </Draggable>
