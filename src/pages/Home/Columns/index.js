@@ -52,8 +52,6 @@ class Columns extends Component {
             }
         }
 
-        console.log(newState)
-
         this.setState(newState)
     }
 

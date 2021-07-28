@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-    margin: 8px;
+    margin: 1rem;
     border: 1px solid lightgrey;
-    border-radius: 2px;
     background-color: #F6F7F9;
-    width: 220px;
+    min-width: 14rem;
     height: 3rem;
+    border-radius: 6px;
 
     box-shadow: 0px 3px 6px #00000029;
 `
@@ -15,6 +15,7 @@ export const Container = styled.div`
 export const Title = styled.h3`
     margin: 0;    
     margin-left: 1rem;
+    font-weight: 100;
 `
 
 export const NewColumnClickable = styled(Link)`
