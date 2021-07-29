@@ -4,14 +4,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { AccountCircle } from "@material-ui/icons";
 import { withStyles } from "@material-ui/styles";
 
-import HeaderButton from '../HeaderButton';
-
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import { MenuButton } from './style';
 
 const styles = theme => ({
   root: {
@@ -68,9 +67,9 @@ class HeaderDrawer extends Component {
 
       return (
           <Hidden smUp>
-              <HeaderButton onClick={this.toggleDrawer(!this.state.open)}>
+              <MenuButton onClick={this.toggleDrawer(!this.state.open)}>
                   <MenuIcon />
-              </HeaderButton>
+              </MenuButton>
               <Drawer anchor="left" open={this.state.open} onClose={() => this.toggleDrawer(false)} className={classes.root}>
                   {this.list()}
               </Drawer>

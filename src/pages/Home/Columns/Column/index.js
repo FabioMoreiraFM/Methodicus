@@ -1,7 +1,10 @@
 import { Component } from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import { Container, TaskList, Title, NewTaskContainer } from './style';
+import { Container, TaskList, Title, NewTaskContainer, HeaderContainer } from './style';
 import Task from './Task';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import {default as Options} from 'components/UI/ButtonWithPopover';
+import OptionsPopover from './ColumnPopovers/OptionsPopover';
 
 class Column extends Component {
     render() {
@@ -12,9 +15,14 @@ class Column extends Component {
                         {...provided.draggableProps}
                         ref={provided.innerRef}
                     >
-                        <Title {...provided.dragHandleProps}>
-                            {this.props.column.title}
-                        </Title>
+                        <HeaderContainer>
+                            <Title {...provided.dragHandleProps}>
+                                {this.props.column.title}
+                            </Title>
+                            <Options popover={OptionsPopover} onClick>
+                                <MoreHorizIcon />
+                            </Options> 
+                        </HeaderContainer>                                               
                         <Droppable droppableId={this.props.column.id}>
                             {
                                 (provided, snapshot) => (

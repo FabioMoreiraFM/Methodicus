@@ -14,10 +14,15 @@ export const Container = styled.div`
     flex-direction: column;
 `
 
+export const HeaderContainer = styled.div`
+    display: flex;
+`
+
 export const Title = styled.h3`
     margin: 0;
     padding: 0.5rem;
     font-weight: 100;
+    flex-grow: 1;
 `
 
 export const TaskList = styled.div`
