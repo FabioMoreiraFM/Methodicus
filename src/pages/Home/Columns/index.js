@@ -30,6 +30,41 @@ const initialData = {
 class Columns extends Component {
     state = initialData
     
+    onRenameColumn = (columnId, newColumnName) => {
+        let newColumn = this.state.columns[columnId]
+        newColumn.title = newColumnName
+
+        let newColumns = {...this.state.columns}
+        newColumns[columnId] = newColumn
+
+        this.setState({
+            ...this.state,
+            columns: newColumns
+        })
+    }
+
+    onDeleteColumn = columnId => {
+        let newColumnOrder = Array.from(this.state.columnOrder)
+        newColumnOrder = newColumnOrder.filter(columnOrder => columnOrder !== columnId)
+
+        let newColumns = {...this.state.columns}
+        let newTasks = {...this.state.tasks}
+
+        let removedColumn = newColumns[columnId]
+        removedColumn.taskIds.map(taskId => delete newTasks[taskId])
+
+        delete newColumns[columnId]
+
+        const newState = {
+            ...this.state,
+            columns: newColumns,
+            columnOrder: newColumnOrder,
+            tasks: newTasks
+        }
+
+        this.setState(newState)        
+    }
+
     onClickNewTask = (columnId) => {
         const newTask = {
             id: ''+Date.now(),
@@ -168,7 +203,15 @@ class Columns extends Component {
                                 const column = this.state.columns[columnId]
                                 const tasks = column.taskIds.map(taskId => this.state.tasks[taskId])
                     
-                                return <Column key={column.id} column={column} tasks={tasks} index={index} onClickNewTask={this.onClickNewTask} />
+                                return <Column 
+                                    key={column.id} 
+                                    column={column} 
+                                    tasks={tasks} 
+                                    index={index} 
+                                    onClickNewTask={this.onClickNewTask} 
+                                    onDeleteColumn={this.onDeleteColumn} 
+                                    onRenameColumn={this.onRenameColumn}
+                                    />
                             })}
                             {provided.placeholder}
                             <NewColumn onClickCreateColumn={this.onClickCreateColumn} />

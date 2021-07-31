@@ -1,3 +1,4 @@
+import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -48,4 +49,10 @@ export const NewTaskContainer = styled(Link)`
     &:hover {
         background-color: lightgrey;
     }
+`
+
+export const RenameTextField = styled(TextField)`
+    margin-left: 0.5rem;
+    margin-top: 0.30rem;
+    width: 11rem;
 `

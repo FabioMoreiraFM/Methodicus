@@ -51,7 +51,7 @@ class HeaderDrawer extends Component {
           onClick={this.toggleDrawer(false)}
           onKeyDown={this.toggleDrawer(false)}
         >
-          <List>
+          <List component="nav">
             {this.state.menus.map((menu, index) => (
               <ListItem button key={menu[0]}>
                 <ListItemIcon>{menu[1]}</ListItemIcon>

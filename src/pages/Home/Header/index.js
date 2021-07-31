@@ -17,10 +17,10 @@ const Header = () => {
                 <Logo src={img} alt="logotipo da empresa" />
                 <TradeMark>Methodicus</TradeMark>
                 <Hidden xsDown>
-                    <ButtonWithPopover popover={NotificationPopover} onMouseOver color="#D5D6D8">
+                    <ButtonWithPopover popover={NotificationPopover} onMouseOver buttoncolor="#D5D6D8">
                         <NotificationsNoneIcon />
                     </ButtonWithPopover>
-                    <ButtonWithPopover popover={ProfilePopover} onMouseOver color="#D5D6D8">
+                    <ButtonWithPopover popover={ProfilePopover} onMouseOver buttoncolor="#D5D6D8">
                         <AccountCircle />
                     </ButtonWithPopover>
                 </Hidden>

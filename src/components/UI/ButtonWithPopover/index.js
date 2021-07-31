@@ -26,7 +26,7 @@ const ButtonWithPopover = ({popover: Popover, ...props}) => {
                 onMouseEnter={props.onMouseOver && handlePopoverOpen} 
                 onMouseLeave={props.onMouseOver && handlePopoverClose} 
                 onClick={props.onClick && handlePopoverOnClick}
-                color={props.color}
+                buttoncolor={props.buttoncolor}
               >                
                 {props.children}
             </HeaderIconButton>

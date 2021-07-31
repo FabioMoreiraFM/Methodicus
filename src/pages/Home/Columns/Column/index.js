@@ -1,19 +1,47 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import { Container, TaskList, Title, NewTaskContainer, HeaderContainer } from './style';
+import { Container, TaskList, Title, NewTaskContainer, HeaderContainer, RenameTextField } from './style';
 import Task from './Task';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import {default as Options} from 'components/UI/ButtonWithPopover';
 import OptionsPopover from './ColumnPopovers/OptionsPopover';
+import { ClickAwayListener } from '@material-ui/core';
+
 
 class Column extends Component {
+    state = {
+        editColumnNameActive: false
+    }
+
+    
+    handleEditColumnName = () => {
+        this.setState({editColumnNameActive: false})
+    }
+
     render() {
+        const OptionsPopverWithProps = (props) => (
+            <OptionsPopover 
+                onDeleteColumn={this.props.onDeleteColumn} 
+                onRenameColumn={() => this.setState({editColumnNameActive: !this.state.editColumnNameActive})}
+                columnId={this.props.column.id} 
+                {...props} 
+            />
+        )
+
         const header = (provided) => (
             <HeaderContainer>
-                <Title {...provided.dragHandleProps}>
-                    {this.props.column.title}
-                </Title>
-                <Options popover={OptionsPopover} onClick>
+                {!this.state.editColumnNameActive &&
+                    <Title {...provided.dragHandleProps}>
+                        {this.props.column.title}
+                    </Title>
+                }
+                {
+                    this.state.editColumnNameActive && 
+                    <ClickAwayListener onClickAway={this.handleEditColumnName}>
+                        <RenameTextField id="standard-basic" value={this.props.column.title} onChange={(e) => this.props.onRenameColumn(this.props.column.id, e.target.value)} InputLabelProps={{shrink: false}} {...provided.dragHandleProps} />
+                    </ClickAwayListener>
+                }
+                <Options popover={OptionsPopverWithProps} onClick>
                     <MoreHorizIcon />
                 </Options> 
             </HeaderContainer>
