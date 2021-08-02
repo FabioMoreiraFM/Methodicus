@@ -3,13 +3,15 @@
 
 .react-tabs__tab--selected span{
     color: #3949AB;
-    border-bottom: 3px solid #3949AB;    
+    border-bottom: 3px solid #3949AB;   
+    padding-bottom: 5px; 
 }
 
 @media screen and (max-width: 600px) {
   .react-tabs__tab--selected span{
     color: #668FE1;
     border-bottom: 3px solid #668FE1; 
+    padding-bottom: 5px;
   }
 }
 

@@ -41,7 +41,7 @@ class Login extends Component {
                                     </LoginTab>
                                 </LoginTabList>
                                 <TabPanel>
-                                    <LoginPanel/>
+                                    <LoginPanel history={this.props.history} />
                                 </TabPanel>
                                 <TabPanel>
                                     <RecoverPasswordPanel />

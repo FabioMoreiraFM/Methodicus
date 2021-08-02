@@ -10,7 +10,7 @@ class NewColumn extends Component {
 
         return (
             <Container>
-                <NewColumnClickable to='#' onClick={context.onClickCreateColumn}>
+                <NewColumnClickable to='/home' onClick={context.onClickCreateColumn}>
                     <AddIcon />
                     <Title>Nova Coluna</Title>
                 </NewColumnClickable>

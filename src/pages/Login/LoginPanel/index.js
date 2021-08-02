@@ -32,6 +32,10 @@ export default class LoginPanel extends Component {
         }
 
         this.setState(newState)
+
+        if (!newState.userError && !newState.passwordError) {
+            this.props.history.push('/home')   
+        }
     }
 
     onClickClearError = (error, message) => {

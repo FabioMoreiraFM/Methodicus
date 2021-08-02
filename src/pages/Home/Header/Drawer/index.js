@@ -38,11 +38,11 @@ class HeaderDrawer extends Component {
     }
 
     toggleDrawer = (isOpen) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-          return;
-        }
-        
-        this.setState({open: isOpen});
+      if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+      }
+              
+      this.setState({open: isOpen});
     };
 
     list = () => (

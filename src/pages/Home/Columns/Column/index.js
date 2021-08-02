@@ -67,7 +67,7 @@ class Column extends Component {
         )
 
         const footer = () => (
-            <NewTaskContainer to="" onClick={() => context.onClickNewTask(this.props.column.id)}>
+            <NewTaskContainer to="/home" onClick={() => context.onClickNewTask(this.props.column.id)}>
                 + Nova tarefa
             </NewTaskContainer>
         )

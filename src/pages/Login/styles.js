@@ -5,13 +5,12 @@ import styled from 'styled-components'
 
 import theme from 'config/theme';
 
-const black = '#2A2A2E';
 const blue = '#668FE1';
 const blackGrey = '#434040';
 const blueButton = '#3949AB';
 
 export const GridFundo = styled(Grid)`
-    background-color: ${black};
+    background-color: ${blueButton};
     min-height: 100vh;
 `
 
@@ -20,28 +19,28 @@ export const LoginContainer = styled(Grid)`
     padding: 2rem 5rem;
     margin-bottom: 2rem;
     ${theme.breakpoints.down("xs")} {
-        background-color: ${black};
+        background-color: ${blueButton};
         padding: 0 1rem;
     }
 `
 export const Logo = styled.img`
-    height: 8rem;   
-    width: 8rem;
+    height: 7rem;   
+    width: 7rem;
     ${theme.breakpoints.down("xs")} {
         margin-top: 1rem;
-        height: 6rem;
-        width: 6rem;
+        height: 5rem;
+        width: 5rem;
     } 
 `
 export const TradeMark = styled.h1`
     font-family: 'Pacifico';
     color: ${blue};
-    font-size: 4rem;
+    font-size: 3rem;
     margin-top: 0;
     font-weight: 300;
     ${theme.breakpoints.down("xs")} {
         margin: 0;
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 `
 export const LoginTitle = styled.h2`
@@ -83,9 +82,11 @@ export const LoginTab = styled(Tab)`
 export const TabLabel = styled.span`
     font-size: 1.2rem;
     color: ${blackGrey};  
+    border-radius: 3px;
     &:hover {
         color: ${blueButton};
-        border-bottom: 3px solid ${blueButton};
+        border-bottom: 3px solid ${blueButton};  
+        padding-bottom: 5px;              
     }
     ${theme.breakpoints.down("xs")} {
         font-size: 0.9rem;
@@ -93,6 +94,8 @@ export const TabLabel = styled.span`
         &:hover {
             color: ${blue};
             border-bottom: 3px solid ${blue};
+            font-weight: 600;
+            padding-bottom: 5px;
         }
     }
 `

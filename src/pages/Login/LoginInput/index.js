@@ -36,7 +36,12 @@ const styles = theme => ({
                 color: "white"
             },
             "& .MuiFormLabel-root.Mui-error": {
-                color: "red"
+                color: "#F87F7F",
+                fontWeight: "600"
+            },
+            "& .MuiFormHelperText-root.MuiFormHelperText-contained.Mui-error": {   
+                color: "#F87F7F",
+                fontWeight: "600"
             }
         }
     }
