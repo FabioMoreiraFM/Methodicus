@@ -6,7 +6,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import {default as Options} from 'components/UI/ButtonWithPopover';
 import OptionsPopover from './ColumnPopovers/OptionsPopover';
 import { ClickAwayListener } from '@material-ui/core';
-
+import withContext from 'hoc/withContext';
 
 class Column extends Component {
     state = {
@@ -19,9 +19,11 @@ class Column extends Component {
     }
 
     render() {
+        const {context} = this.props
+
         const OptionsPopverWithProps = (props) => (
             <OptionsPopover 
-                onDeleteColumn={this.props.onDeleteColumn} 
+                onDeleteColumn={context.onDeleteColumn} 
                 onRenameColumn={() => this.setState({editColumnNameActive: !this.state.editColumnNameActive})}
                 columnId={this.props.column.id} 
                 {...props} 
@@ -38,7 +40,7 @@ class Column extends Component {
                 {
                     this.state.editColumnNameActive && 
                     <ClickAwayListener onClickAway={this.handleEditColumnName}>
-                        <RenameTextField id="standard-basic" value={this.props.column.title} onChange={(e) => this.props.onRenameColumn(this.props.column.id, e.target.value)} InputLabelProps={{shrink: false}} {...provided.dragHandleProps} />
+                        <RenameTextField id="standard-basic" value={this.props.column.title} onChange={(e) => context.onRenameColumn(this.props.column.id, e.target.value)} InputLabelProps={{shrink: false}} {...provided.dragHandleProps} />
                     </ClickAwayListener>
                 }
                 <Options popover={OptionsPopverWithProps} onClick>
@@ -65,7 +67,7 @@ class Column extends Component {
         )
 
         const footer = () => (
-            <NewTaskContainer to="" onClick={() => this.props.onClickNewTask(this.props.column.id)}>
+            <NewTaskContainer to="" onClick={() => context.onClickNewTask(this.props.column.id)}>
                 + Nova tarefa
             </NewTaskContainer>
         )
@@ -87,4 +89,4 @@ class Column extends Component {
     }
 }
 
-export default Column;
+export default withContext(Column);
