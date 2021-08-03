@@ -2,26 +2,26 @@ import React from 'react';
 import { HeaderIconButton } from "./style";
 
 const ButtonWithPopover = ({popover: Popover, ...props}) => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [openedPopover, setOpenedPopover] = React.useState(null);
+    const popoverAnchor = React.useRef(null);
 
     const handlePopoverOpen = (event) => {
-      setAnchorEl(event.currentTarget);
+      setOpenedPopover(true)
     };
   
     const handlePopoverClose = () => {
-      setAnchorEl(null);
+      setOpenedPopover(false)
     };
 
     const handlePopoverOnClick = (event) => {
-      setAnchorEl(anchorEl === null ? event.currentTarget : null)
+      setOpenedPopover(!openedPopover)
     }
     
-    const open = Boolean(anchorEl);
-
     return (
         <>
             <HeaderIconButton 
-                aria-owns={open ? 'mouse-over-popover' : undefined} 
+                ref={popoverAnchor}
+                aria-owns={'mouse-over-popover'} 
                 aria-haspopup="true" 
                 onMouseEnter={props.onMouseOver && handlePopoverOpen} 
                 onMouseLeave={props.onMouseOver && handlePopoverClose} 
@@ -32,9 +32,11 @@ const ButtonWithPopover = ({popover: Popover, ...props}) => {
             </HeaderIconButton>
             { Popover && 
               <Popover 
-                open={open} 
-                anchorEl={anchorEl} 
+                open={openedPopover} 
+                anchorEl={popoverAnchor.current}
+                onMouseEnter={handlePopoverOpen}
                 onExit={handlePopoverClose}
+                onMouseLeave={handlePopoverClose} 
               />
             }
         </>

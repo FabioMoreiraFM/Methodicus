@@ -9,7 +9,15 @@ import ProfilePopover from "./HeaderPopovers/ProfilePopover";
 import HeaderDrawer from './Drawer';
 import ButtonWithPopover from 'components/UI/ButtonWithPopover';
 
-const Header = () => {
+
+const Header = (props) => {
+    const ProfilePopoverWithProps = (otherProps) => (
+        <ProfilePopover 
+            history={props.history}
+            {...otherProps}
+        />
+    )
+
     return (
         <StyledAppBar position="static">
             <Toolbar>
@@ -20,7 +28,7 @@ const Header = () => {
                     <ButtonWithPopover popover={NotificationPopover} onMouseOver buttoncolor="#D5D6D8">
                         <NotificationsNoneIcon />
                     </ButtonWithPopover>
-                    <ButtonWithPopover popover={ProfilePopover} onMouseOver buttoncolor="#D5D6D8">
+                    <ButtonWithPopover popover={ProfilePopoverWithProps} onMouseOver buttoncolor="#D5D6D8">
                         <AccountCircle />
                     </ButtonWithPopover>
                 </Hidden>

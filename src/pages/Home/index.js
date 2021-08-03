@@ -13,7 +13,7 @@ class Home extends Component {
                 <RightBackground src={rightBackground} alt="Imagem de fundo da página principal (Lado Direito)." />
                 <LeftBackground src={leftBackground} alt="Imagem de fundo da página principal (Lado Esquerdo)." />
                 <HomeContainer>
-                    <Header />
+                    <Header history={this.props.history} />
                     <TaskContextProvider>
                         <Columns />
                     </TaskContextProvider>
