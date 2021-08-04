@@ -1,12 +1,11 @@
-import TaskContext from 'context/tasks-context'
 import React from 'react'
 
-export default function withContext(Component) {
-    return function contextComponent(props) {
+export default function withContext(Context) {
+    return (Component) => (props) => {
         return (
-            <TaskContext.Consumer>
+            <Context.Consumer>
                 {context => <Component {...props} context={context} />}
-            </TaskContext.Consumer>
-        )
+            </Context.Consumer>
+        )    
     }
 }

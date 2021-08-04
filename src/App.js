@@ -4,13 +4,16 @@ import Routes from "routes";
 import theme from 'config/theme';
 
 import './App.css'
+import { AuthContextProvider } from "context/auth-context";
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Routes />
+        <AuthContextProvider>
+          <Routes />
+        </AuthContextProvider>
       </ThemeProvider>
     </>
   );

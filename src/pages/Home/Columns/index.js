@@ -5,6 +5,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { Container } from './style';
 import NewColumn from './NewColumn';
 import withContext from 'hoc/withContext';
+import TaskContext from 'context/tasks-context';
 
 class Columns extends Component {
     render() {
@@ -40,4 +41,4 @@ class Columns extends Component {
     }
 }
 
-export default withContext(Columns);
+export default withContext(TaskContext)(Columns);

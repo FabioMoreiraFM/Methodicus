@@ -7,6 +7,7 @@ import {default as Options} from 'components/UI/ButtonWithPopover';
 import OptionsPopover from './ColumnPopovers/OptionsPopover';
 import { ClickAwayListener } from '@material-ui/core';
 import withContext from 'hoc/withContext';
+import TaskContext from 'context/tasks-context';
 
 class Column extends Component {
     state = {
@@ -89,4 +90,4 @@ class Column extends Component {
     }
 }
 
-export default withContext(Column);
+export default withContext(TaskContext)(Column);

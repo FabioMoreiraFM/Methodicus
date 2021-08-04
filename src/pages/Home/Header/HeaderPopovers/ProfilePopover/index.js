@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { ExitToApp, Settings } from '@material-ui/icons';
 import { Name, NameContainer, ProfileContainer } from './style';
+import withContext from 'hoc/withContext';
+import AuthContext from 'context/auth-context';
 
 const useStyles = makeStyles((theme) => ({
   popover: {
@@ -14,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProfilePopover (props) {
+function ProfilePopover (props) {
   const classes = useStyles();
   
   const logout = () => {
@@ -41,6 +43,8 @@ export default function ProfilePopover (props) {
       </div>
   )
 
+  const username = props.context.state.name
+
   return (      
       <Popover
         id="mouse-over-popover"
@@ -62,10 +66,10 @@ export default function ProfilePopover (props) {
         PaperProps={{onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave}}
       >
         <ProfileContainer>
-          <Avatar>US</Avatar>
+          <Avatar>{username.split(' ')[0][0] + username.split(' ')[1][0]}</Avatar>
           <NameContainer>
-            <Name>Usuário</Name>
-            <Name>Teste</Name>
+            <Name>{username.split(' ')[0]}</Name>
+            <Name>{username.split(' ')[1]}</Name>
           </NameContainer>
         </ProfileContainer>
         <Divider variant="middle" />
@@ -73,3 +77,5 @@ export default function ProfilePopover (props) {
       </Popover>
   );
 }
+
+export default withContext(AuthContext)(ProfilePopover);
