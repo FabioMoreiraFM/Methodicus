@@ -44,6 +44,7 @@ class TaskDialog extends Component {
     return (
       <div>
         <Dialog open={this.props.open} onClose={this.onHandleClose} aria-labelledby="form-dialog-title">
+          <DialogTitle>Editar tarefa</DialogTitle>
           <DialogContent>
             <InputContainer>
               <DescriptionIcon  />
@@ -56,6 +57,7 @@ class TaskDialog extends Component {
                 onChange={(e) => this.onHandleChange("content", e.target.value)}        
                 multiline
                 maxRows={4}
+                placeholder="Descreva a tarefa."
               />
             </InputContainer>
 
@@ -65,7 +67,7 @@ class TaskDialog extends Component {
                 id="name"            
                 type="text"
                 InputLabelProps={{shrink: false}} 
-                placeholder="Adicione uma descrição mais detalhada." 
+                placeholder="Adicione detalhes sobre a tarefa." 
                 value={this.state.description}  
                 onKeyDown={this.preventNewLine}
                 onChange={(e) => this.onHandleChange("description", e.target.value)}         
