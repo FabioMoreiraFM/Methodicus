@@ -3,10 +3,10 @@ import { Component } from 'react'
 
 const initialData = {
     tasks: {
-        'task-1': {id: 'task-1', content: "Take out garbage"},
-        'task-2': {id: 'task-2', content: "Watch my favorite show"},
-        'task-3': {id: 'task-3', content: "Charge my phone"},
-        'task-4': {id: 'task-4', content: "Cook dinner"}
+        'task-1': {id: 'task-1', content: "Take out garbage", description: ""},
+        'task-2': {id: 'task-2', content: "Watch my favorite show", description: ""},
+        'task-3': {id: 'task-3', content: "Charge my phone", description: ""},
+        'task-4': {id: 'task-4', content: "Cook dinner", description: ""}
     },
     columns: {
         'column-1': {
@@ -29,11 +29,43 @@ const TaskContext = React.createContext({
     onDeleteColumn: () => {},
     onClickNewTask: () => {},
     onClickCreateColumn: () => {},
-    onDragEnd: () => {}
+    onDragEnd: () => {},
+    onEditTask: () => {},
+    onDeleteTask: () => {}
 })
 
 export class TaskContextProvider extends Component {
     state = initialData
+
+    onDeleteTask = (taskIdToDelete, columnId) => {
+        const newTasks = {...this.state.tasks}
+        delete newTasks[taskIdToDelete]
+        
+        const newColumns = {...this.state.columns}
+        let newTaskIds = newColumns[columnId].taskIds
+        newTaskIds = newTaskIds.filter(taskId => taskId !== taskIdToDelete)
+        newColumns[columnId].taskIds = newTaskIds
+
+        console.log(newColumns)
+
+        this.setState({
+            ...this.state,
+            tasks: newTasks,
+            columns: newColumns
+        })
+    }
+
+    onEditTask = (newTask) => {
+        let taskId = newTask.id
+
+        const newTasks = {...this.state.tasks}
+        newTasks[taskId] = newTask
+
+        this.setState({
+            ...this.state,
+            tasks: newTasks
+        })
+    }
 
     onRenameColumn = (columnId, newColumnName) => {
         let newColumn = this.state.columns[columnId]
@@ -203,7 +235,9 @@ export class TaskContextProvider extends Component {
                 onDeleteColumn: this.onDeleteColumn,
                 onClickNewTask: this.onClickNewTask,
                 onClickCreateColumn: this.onClickCreateColumn,
-                onDragEnd: this.onDragEnd
+                onDragEnd: this.onDragEnd,
+                onEditTask: this.onEditTask,
+                onDeleteTask: this.onDeleteTask
             }}
             >
                 {this.props.children}
