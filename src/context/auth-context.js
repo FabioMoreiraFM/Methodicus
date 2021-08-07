@@ -7,16 +7,25 @@ const initialData = {
 }
 
 const AuthContext = React.createContext({
-    initialData     
+    initialData,
+    onEditUser: () => {}     
 })
 
 export class AuthContextProvider extends Component {
     state = initialData
 
+    onEditUser = (newUsername, newName) => {
+        this.setState({
+            username: newUsername,
+            name: newName
+        })
+    }
+
     render() {
         return (
             <AuthContext.Provider value={{
-                state: this.state
+                state: this.state,
+                onEditUser: this.onEditUser
             }}
             >
                 {this.props.children}

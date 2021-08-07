@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider} from "@material-ui/core";
 
-import Routes from "routes";
+import Routes from "routes/mainRoute";
 import theme from 'config/theme';
 
 import './App.css'

@@ -2,7 +2,7 @@ import React from 'react';
 import { HeaderIconButton } from "./style";
 
 const ButtonWithPopover = ({popover: Popover, ...props}) => {
-    const [openedPopover, setOpenedPopover] = React.useState(null);
+    const [openedPopover, setOpenedPopover] = React.useState(false);
     const popoverAnchor = React.useRef(null);
 
     const handlePopoverOpen = (event) => {

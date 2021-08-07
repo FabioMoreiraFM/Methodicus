@@ -23,8 +23,12 @@ function ProfilePopover (props) {
     return props.history.push('/login')
   }
 
+  const toSettings = () => {
+    return props.history.push('/home/settings')
+  }
+
   const menus = [
-      ['Configurações', <Settings />],
+      ['Configurações', <Settings />, toSettings],
       ['Sair', <ExitToApp />, logout]   
   ]
 

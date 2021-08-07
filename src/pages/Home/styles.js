@@ -22,7 +22,7 @@ export const LeftBackground = styled.img`
     left: 0;
     bottom: 0;
     height: 23rem;   
-    width: 35rem;
+    width: 34.5rem;
     opacity: 0.34;
     z-index: -1;
     ${theme.breakpoints.down("xs")} {        

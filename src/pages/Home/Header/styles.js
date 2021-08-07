@@ -1,6 +1,7 @@
 import theme from 'config/theme';
 import styled from 'styled-components'
 import { AppBar} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const blue = '#668FE1';
 
@@ -9,8 +10,7 @@ export const TradeMark = styled.h1`
     color: ${blue};
     font-size: 2rem;
     margin: 0 0 0 0.5rem;
-    font-weight: 300;
-    flex-grow: 1;
+    font-weight: 300;    
 `
 export const Logo = styled.img`
     height: 3rem;   
@@ -26,4 +26,10 @@ export const StyledAppBar = styled(AppBar)`
         z-index: 1301;
         box-shadow: none;
     }
+`
+
+export const StyledLogoLink = styled(Link)`
+    flex-grow: 1;
+    display: flex;
+    text-decoration: none;
 `

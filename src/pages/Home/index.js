@@ -3,8 +3,8 @@ import Header from './Header';
 import { LeftBackground, RightBackground, HomeContainer } from './styles';
 import rightBackground from 'assets/rightBackground.jpg'
 import leftBackground from 'assets/leftBackground.jpg'
-import Columns from './Columns';
-import { TaskContextProvider } from 'context/tasks-context';
+import Routes from 'routes/homeRoute';
+
 
 class Home extends Component {
     render() {
@@ -14,9 +14,7 @@ class Home extends Component {
                 <LeftBackground src={leftBackground} alt="Imagem de fundo da página principal (Lado Esquerdo)." />
                 <HomeContainer>
                     <Header history={this.props.history} />
-                    <TaskContextProvider>
-                        <Columns />
-                    </TaskContextProvider>
+                    <Routes />
                 </HomeContainer>
             </>
         )
