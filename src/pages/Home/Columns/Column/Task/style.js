@@ -12,3 +12,11 @@ export const Container = styled.div`
         max-width: 15rem;
     }
 `
+
+export const IconContainer = styled.div`
+    svg {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    height: 1.2rem;
+`

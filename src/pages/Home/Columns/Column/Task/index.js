@@ -1,8 +1,9 @@
 import TaskDialog from 'components/UI/Dialogs/TaskDialog';
 import { Component } from 'react'
 import { Draggable } from 'react-beautiful-dnd';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
-import { Container } from './style';
+import { Container, IconContainer } from './style';
 
 class Task extends Component {
     state = {
@@ -30,6 +31,13 @@ class Task extends Component {
                             onClick={this.handleClickOpen}                     
                         >
                             {this.props.task.content}
+                            {this.props.task.additionalContent &&
+                                <IconContainer>
+                                    {
+                                        this.props.task.description && <PlaylistAddIcon/>
+                                    }              
+                                </IconContainer>   
+                            }           
                         </Container>
                     )}
                 </Draggable>

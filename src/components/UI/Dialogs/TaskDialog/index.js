@@ -17,7 +17,8 @@ class TaskDialog extends Component {
     this.state = {
       id: this.props.task.id,
       content: this.props.task.content,
-      description: this.props.task.description
+      description: this.props.task.description,
+      additionalContent: false
     }
   }
 
@@ -26,7 +27,13 @@ class TaskDialog extends Component {
   }
 
   onHandleClose = () => {
-    this.props.context.onEditTask(this.state)
+    const newTask = {...this.state}
+
+    if (newTask.description) {
+      newTask.additionalContent = true
+    }
+
+    this.props.context.onEditTask(newTask)
     this.props.handleClose()
   }
 
