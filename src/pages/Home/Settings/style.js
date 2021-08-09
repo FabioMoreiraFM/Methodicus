@@ -1,5 +1,6 @@
 import { Avatar } from '@material-ui/core'
 import styled from 'styled-components'
+import theme from 'config/theme';
 
 export const SettingsContainer = styled.div`
     flex-grow: 1;
@@ -19,6 +20,10 @@ export const SettingsDialog = styled.div`
     
     display: flex;
     flex-direction: column;
+
+    ${theme.breakpoints.down("xs")} {
+        width: 22rem;        
+    }
 `
 
 export const HeaderDialog = styled.div`

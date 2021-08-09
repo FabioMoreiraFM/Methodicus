@@ -20,7 +20,9 @@ const Header = (props) => {
     return (
         <StyledAppBar position="static">
             <Toolbar>
-                <HeaderDrawer />
+                <Hidden smUp>
+                    <HeaderDrawer history={props.history}/>
+                </Hidden>
                 <StyledLogoLink to="/home/">
                     <Logo src={img} alt="logotipo da empresa" />
                     <TradeMark>Methodicus</TradeMark>

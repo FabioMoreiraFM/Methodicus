@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Hidden, Drawer } from "@material-ui/core";
+import { Drawer } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { AccountCircle } from "@material-ui/icons";
 import { withStyles } from "@material-ui/styles";
@@ -32,9 +32,13 @@ class HeaderDrawer extends Component {
     state = {
         open: false,
         menus: [
-            ['Notificações', <NotificationsNoneIcon />],
-            ['Perfil', <AccountCircle /> ]   
+            ['Notificações', <NotificationsNoneIcon />, () => this.goTo('/home/settings')],
+            ['Perfil', <AccountCircle />, () => this.goTo('/home/settings') ]   
         ]
+    }
+
+    goTo = (path) => {
+      this.props.history.push(path)
     }
 
     toggleDrawer = (isOpen) => (event) => {
@@ -53,7 +57,7 @@ class HeaderDrawer extends Component {
         >
           <List component="nav">
             {this.state.menus.map((menu, index) => (
-              <ListItem button key={menu[0]}>
+              <ListItem button key={menu[0]} onClick={menu[2]}> 
                 <ListItemIcon>{menu[1]}</ListItemIcon>
                 <ListItemText primary={menu[0]} />
               </ListItem>
@@ -66,14 +70,14 @@ class HeaderDrawer extends Component {
       const {classes} = this.props
 
       return (
-          <Hidden smUp>
-              <MenuButton onClick={this.toggleDrawer(!this.state.open)}>
-                  <MenuIcon />
-              </MenuButton>
-              <Drawer anchor="left" open={this.state.open} onClose={() => this.toggleDrawer(false)} className={classes.root}>
-                  {this.list()}
-              </Drawer>
-          </Hidden>
+        <>
+          <MenuButton onClick={this.toggleDrawer(!this.state.open)}>
+              <MenuIcon />
+          </MenuButton>
+          <Drawer anchor="left" open={this.state.open} onClose={() => this.toggleDrawer(false)} className={classes.root}>
+              {this.list()}
+          </Drawer>
+        </>
       )
     }
 }
