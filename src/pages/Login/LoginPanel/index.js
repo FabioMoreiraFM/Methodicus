@@ -3,8 +3,10 @@ import {Grid} from '@material-ui/core'
 import LoginInput from '../LoginInput'
 
 import { LoginButton } from "../styles";
+import withContext from "hoc/withContext";
+import AuthContext from "context/auth-context";
 
-export default class LoginPanel extends Component {
+class LoginPanel extends Component {
     state = {
         user: "",
         password: "",
@@ -34,6 +36,7 @@ export default class LoginPanel extends Component {
         this.setState(newState)
 
         if (!newState.userError && !newState.passwordError) {
+            this.props.context.onEditUser("teste@teste.com", newState.user)
             this.props.history.push('/home')   
         }
     }
@@ -58,3 +61,5 @@ export default class LoginPanel extends Component {
         )
     }
 }
+
+export default withContext(AuthContext)(LoginPanel)

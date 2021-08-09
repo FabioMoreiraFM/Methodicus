@@ -17,19 +17,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ProfilePopover (props) {
+  const username = props.context.state.name
   const classes = useStyles();
   
-  const logout = () => {
-    return props.history.push('/login')
-  }
-
-  const toSettings = () => {
-    return props.history.push('/home/settings')
+  const goTo = (path) => {
+    return props.history.push(path)
   }
 
   const menus = [
-      ['Configurações', <Settings />, toSettings],
-      ['Sair', <ExitToApp />, logout]   
+      ['Configurações', <Settings />, () => goTo('/home/settings')],
+      ['Sair', <ExitToApp />, () => goTo('/login')]   
   ]
 
   const list = () => (
@@ -46,8 +43,25 @@ function ProfilePopover (props) {
         </List>
       </div>
   )
+  
+  const getFirstName = () => {
+    return username.split(' ')[0]
+  }
 
-  const username = props.context.state.name
+  const getSurName = () => {
+    return username.split(' ')[1]
+  }
+
+  const getAvatarName = () => {
+    let avatarName = ''
+    try {
+      avatarName = getFirstName()[0] + getSurName()[0]
+    } catch (e) {
+      avatarName = getFirstName()[0]
+    }
+
+    return avatarName
+  }
 
   return (      
       <Popover
@@ -70,10 +84,10 @@ function ProfilePopover (props) {
         PaperProps={{onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave}}
       >
         <ProfileContainer>
-          <Avatar>{username.split(' ')[0][0] + username.split(' ')[1][0]}</Avatar>
+          <Avatar>{getAvatarName()}</Avatar>
           <NameContainer>
-            <Name>{username.split(' ')[0]}</Name>
-            <Name>{username.split(' ')[1]}</Name>
+            <Name>{getFirstName()}</Name>
+            <Name>{getSurName()}</Name>
           </NameContainer>
         </ProfileContainer>
         <Divider variant="middle" />

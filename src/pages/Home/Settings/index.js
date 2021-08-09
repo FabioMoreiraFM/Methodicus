@@ -25,9 +25,26 @@ class Settings extends Component {
         this.props.context.onEditUser(this.state.username, this.state.name)
     }
 
-    render () {
-        const authState = this.props.context.state
+    getFirstName = () => {
+        return this.props.context.state.name.split(' ')[0]
+      }
+    
+    getSurName = () => {
+        return this.props.context.state.name.split(' ')[1]
+    }
 
+    getAvatarName = () => {
+        let avatarName = ''
+        try {
+            avatarName = this.getFirstName()[0] + this.getSurName()[0]
+        } catch (e) {
+            avatarName = this.getFirstName()[0]
+        }
+
+        return avatarName
+    }
+
+    render () {
         return (
             <SettingsContainer>
                 <SettingsDialog>
@@ -38,7 +55,7 @@ class Settings extends Component {
                         </DialogTitle>
                     </HeaderDialog>
                     <AvatarDialog>
-                        <StyledAvatar>{authState.name.split(' ')[0][0] + authState.name.split(' ')[1][0]}</StyledAvatar>
+                        <StyledAvatar>{this.getAvatarName()}</StyledAvatar>
                     </AvatarDialog>
                     <FormDialog>
                         <InputDialog>
