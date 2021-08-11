@@ -3,12 +3,12 @@ import { Component } from 'react'
 
 const initialData = {
     username: 'teste@teste.com',
-    name: 'Usuário Teste'    
+    name: 'Usuário Teste'
 }
 
 const AuthContext = React.createContext({
     initialData,
-    onEditUser: () => {}     
+    onEditUser: () => { }
 })
 
 export class AuthContextProvider extends Component {

@@ -1,16 +1,22 @@
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
+
+import TaskContext from 'context/tasks-context';
+import withContext from 'hoc/withContext';
+
+import { DialogTitle, Divider } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import DeleteIcon from '@material-ui/icons/Delete';
 import DescriptionIcon from '@material-ui/icons/Description';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+
 import { InputContainer, DialogActions, ActionButton, StyledTextField } from './style';
-import { DialogTitle, Divider } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-import withContext from 'hoc/withContext';
-import TaskContext from 'context/tasks-context';
+
+
+
 
 class TaskDialog extends Component {
-  
+
   constructor(props) {
     super(props)
 
@@ -23,11 +29,11 @@ class TaskDialog extends Component {
   }
 
   onHandleChange = (field, value) => {
-    this.setState({[field]: value})
+    this.setState({ [field]: value })
   }
 
   onHandleClose = () => {
-    const newTask = {...this.state}
+    const newTask = { ...this.state }
 
     if (newTask.description) {
       newTask.additionalContent = true
@@ -54,14 +60,14 @@ class TaskDialog extends Component {
           <DialogTitle>Editar tarefa</DialogTitle>
           <DialogContent>
             <InputContainer>
-              <DescriptionIcon  />
-              <StyledTextField            
-                id="name"            
+              <DescriptionIcon />
+              <StyledTextField
+                id="name"
                 type="text"
-                InputLabelProps={{shrink: false}} 
+                InputLabelProps={{ shrink: false }}
                 value={this.state.content}
                 onKeyDown={this.preventNewLine}
-                onChange={(e) => this.onHandleChange("content", e.target.value)}        
+                onChange={(e) => this.onHandleChange("content", e.target.value)}
                 multiline
                 maxRows={4}
                 placeholder="Descreva a tarefa."
@@ -70,14 +76,14 @@ class TaskDialog extends Component {
 
             <InputContainer>
               <PlaylistAddIcon />
-              <StyledTextField            
-                id="name"            
+              <StyledTextField
+                id="name"
                 type="text"
-                InputLabelProps={{shrink: false}} 
-                placeholder="Adicione detalhes sobre a tarefa." 
-                value={this.state.description}  
+                InputLabelProps={{ shrink: false }}
+                placeholder="Adicione detalhes sobre a tarefa."
+                value={this.state.description}
                 onKeyDown={this.preventNewLine}
-                onChange={(e) => this.onHandleChange("description", e.target.value)}         
+                onChange={(e) => this.onHandleChange("description", e.target.value)}
                 multiline
                 maxRows={4}
               />

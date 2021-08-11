@@ -3,10 +3,10 @@ import { Component } from 'react'
 
 const initialData = {
     tasks: {
-        'task-1': {id: 'task-1', content: "Take out garbage", description: "", additionalContent: false},
-        'task-2': {id: 'task-2', content: "Watch my favorite show", description: "", additionalContent: false},
-        'task-3': {id: 'task-3', content: "Charge my phone", description: "", additionalContent: false},
-        'task-4': {id: 'task-4', content: "Cook dinner", description: "", additionalContent: false}
+        'task-1': { id: 'task-1', content: "Take out garbage", description: "", additionalContent: false },
+        'task-2': { id: 'task-2', content: "Watch my favorite show", description: "", additionalContent: false },
+        'task-3': { id: 'task-3', content: "Charge my phone", description: "", additionalContent: false },
+        'task-4': { id: 'task-4', content: "Cook dinner", description: "", additionalContent: false }
     },
     columns: {
         'column-1': {
@@ -18,30 +18,30 @@ const initialData = {
             id: 'column-2',
             title: 'In progress',
             taskIds: []
-        }               
+        }
     },
     columnOrder: ['column-1', 'column-2']
 }
 
 const TaskContext = React.createContext({
-    initialData, 
-    onRenameColumn: () => {}, 
-    onDeleteColumn: () => {},
-    onClickNewTask: () => {},
-    onClickCreateColumn: () => {},
-    onDragEnd: () => {},
-    onEditTask: () => {},
-    onDeleteTask: () => {}
+    initialData,
+    onRenameColumn: () => { },
+    onDeleteColumn: () => { },
+    onClickNewTask: () => { },
+    onClickCreateColumn: () => { },
+    onDragEnd: () => { },
+    onEditTask: () => { },
+    onDeleteTask: () => { }
 })
 
 export class TaskContextProvider extends Component {
     state = initialData
 
     onDeleteTask = (taskIdToDelete, columnId) => {
-        const newTasks = {...this.state.tasks}
+        const newTasks = { ...this.state.tasks }
         delete newTasks[taskIdToDelete]
-        
-        const newColumns = {...this.state.columns}
+
+        const newColumns = { ...this.state.columns }
         let newTaskIds = newColumns[columnId].taskIds
         newTaskIds = newTaskIds.filter(taskId => taskId !== taskIdToDelete)
         newColumns[columnId].taskIds = newTaskIds
@@ -56,7 +56,7 @@ export class TaskContextProvider extends Component {
     onEditTask = (newTask) => {
         let taskId = newTask.id
 
-        const newTasks = {...this.state.tasks}
+        const newTasks = { ...this.state.tasks }
         newTasks[taskId] = newTask
 
         this.setState({
@@ -69,7 +69,7 @@ export class TaskContextProvider extends Component {
         let newColumn = this.state.columns[columnId]
         newColumn.title = newColumnName
 
-        let newColumns = {...this.state.columns}
+        let newColumns = { ...this.state.columns }
         newColumns[columnId] = newColumn
 
         this.setState({
@@ -82,8 +82,8 @@ export class TaskContextProvider extends Component {
         let newColumnOrder = Array.from(this.state.columnOrder)
         newColumnOrder = newColumnOrder.filter(columnOrder => columnOrder !== columnId)
 
-        let newColumns = {...this.state.columns}
-        let newTasks = {...this.state.tasks}
+        let newColumns = { ...this.state.columns }
+        let newTasks = { ...this.state.tasks }
 
         let removedColumn = newColumns[columnId]
         removedColumn.taskIds.map(taskId => delete newTasks[taskId])
@@ -97,16 +97,16 @@ export class TaskContextProvider extends Component {
             tasks: newTasks
         }
 
-        this.setState(newState)        
+        this.setState(newState)
     }
 
     onClickNewTask = (columnId) => {
         const newTask = {
-            id: ''+Date.now(),
+            id: '' + Date.now(),
             content: "New Task"
         }
 
-        const newColumns = {...this.state.columns[columnId]}
+        const newColumns = { ...this.state.columns[columnId] }
         newColumns.taskIds = Array.from(this.state.columns[columnId].taskIds)
         newColumns.taskIds.push(newTask.id)
 
@@ -127,7 +127,7 @@ export class TaskContextProvider extends Component {
 
     onClickCreateColumn = () => {
         const newColumn = {
-            id: ''+Date.now(),
+            id: '' + Date.now(),
             title: 'New Column',
             taskIds: []
         }
@@ -148,7 +148,7 @@ export class TaskContextProvider extends Component {
     }
 
     onDragEnd = result => {
-        const {destination, source, draggableId, type} = result;
+        const { destination, source, draggableId, type } = result;
 
         if (!destination) {
             return
@@ -156,7 +156,7 @@ export class TaskContextProvider extends Component {
 
         if (destination.droppableId === source.droppableId &&
             destination.index === source.index
-            ) {
+        ) {
             return;
         }
 
@@ -175,18 +175,18 @@ export class TaskContextProvider extends Component {
 
         const start = this.state.columns[source.droppableId]
         const finish = this.state.columns[destination.droppableId]
-        
+
         if (start === finish) {
             const newTaskIds = Array.from(start.taskIds)
-    
+
             newTaskIds.splice(source.index, 1)
             newTaskIds.splice(destination.index, 0, draggableId)
-    
+
             const newColumn = {
                 ...start,
                 taskIds: newTaskIds
             }
-    
+
             const newState = {
                 ...this.state,
                 columns: {
@@ -194,7 +194,7 @@ export class TaskContextProvider extends Component {
                     [newColumn.id]: newColumn
                 }
             }
-    
+
             this.setState(newState)
             return;
         }
@@ -229,7 +229,7 @@ export class TaskContextProvider extends Component {
         return (
             <TaskContext.Provider value={{
                 state: this.state,
-                onRenameColumn: this.onRenameColumn, 
+                onRenameColumn: this.onRenameColumn,
                 onDeleteColumn: this.onDeleteColumn,
                 onClickNewTask: this.onClickNewTask,
                 onClickCreateColumn: this.onClickCreateColumn,

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import {IconButton } from '@material-ui/core';
+
+import { IconButton } from '@material-ui/core';
 
 export const HeaderIconButton = styled(IconButton)`
     color: ${props => props.buttoncolor};

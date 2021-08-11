@@ -1,6 +1,7 @@
-import { Button, TextField } from '@material-ui/core'
-import styled from 'styled-components'
 import theme from 'config/theme';
+import styled from 'styled-components'
+
+import { Button, TextField } from '@material-ui/core'
 
 export const InputContainer = styled.div`
     display: flex;

@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+
 import theme from 'config/theme';
 import styled from 'styled-components'
-import { AppBar} from '@material-ui/core';
-import { Link } from 'react-router-dom';
+
+import { AppBar } from '@material-ui/core';
 
 const blue = '#668FE1';
 

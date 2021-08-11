@@ -1,17 +1,21 @@
 import React from 'react';
-import {Toolbar, Hidden } from "@material-ui/core";
+
 import img from 'assets/logo.png'
-import { Logo, StyledAppBar, TradeMark, StyledLogoLink } from "./styles";
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
+import ButtonWithPopover from 'components/UI/ButtonWithPopover';
+
+import { Toolbar, Hidden } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
+
+import { Logo, StyledAppBar, TradeMark, StyledLogoLink } from "./styles";
+
+import HeaderDrawer from './Drawer';
 import NotificationPopover from "./HeaderPopovers/NotificationPopover";
 import ProfilePopover from "./HeaderPopovers/ProfilePopover";
-import HeaderDrawer from './Drawer';
-import ButtonWithPopover from 'components/UI/ButtonWithPopover';
 
 const Header = (props) => {
     const ProfilePopoverWithProps = (otherProps) => (
-        <ProfilePopover 
+        <ProfilePopover
             history={props.history}
             {...otherProps}
         />
@@ -21,7 +25,7 @@ const Header = (props) => {
         <StyledAppBar position="static">
             <Toolbar>
                 <Hidden smUp>
-                    <HeaderDrawer history={props.history}/>
+                    <HeaderDrawer history={props.history} />
                 </Hidden>
                 <StyledLogoLink to="/home/">
                     <Logo src={img} alt="logotipo da empresa" />

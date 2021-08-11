@@ -1,11 +1,15 @@
 import React from 'react'
 import { Component } from 'react';
-import { AvatarDialog, HeaderDialog, SettingsContainer, SettingsDialog, DialogTitle, StyledAvatar, FormDialog, InputDialog, ActionDialog} from './style';
-import SettingsIcon from '@material-ui/icons/Settings';
-import { AccountCircle, Email } from '@material-ui/icons';
-import { Button, TextField } from '@material-ui/core';
-import withContext from 'hoc/withContext';
+
 import AuthContext from 'context/auth-context';
+import withContext from 'hoc/withContext';
+
+import { Button, TextField } from '@material-ui/core';
+import { AccountCircle, Email } from '@material-ui/icons';
+import SettingsIcon from '@material-ui/icons/Settings';
+
+import { AvatarDialog, HeaderDialog, SettingsContainer, SettingsDialog, DialogTitle, StyledAvatar, FormDialog, InputDialog, ActionDialog } from './style';
+
 
 class Settings extends Component {
     constructor(props) {
@@ -18,7 +22,7 @@ class Settings extends Component {
     }
 
     onHandleChange = (key, value) => {
-        this.setState({[key]: value})
+        this.setState({ [key]: value })
     }
 
     onHandleSubmit = () => {
@@ -27,8 +31,8 @@ class Settings extends Component {
 
     getFirstName = () => {
         return this.props.context.state.name.split(' ')[0]
-      }
-    
+    }
+
     getSurName = () => {
         return this.props.context.state.name.split(' ')[1]
     }
@@ -44,12 +48,12 @@ class Settings extends Component {
         return avatarName
     }
 
-    render () {
+    render() {
         return (
             <SettingsContainer>
                 <SettingsDialog>
                     <HeaderDialog>
-                        <SettingsIcon fontSize="large"/>
+                        <SettingsIcon fontSize="large" />
                         <DialogTitle>
                             Configurações
                         </DialogTitle>
@@ -65,13 +69,13 @@ class Settings extends Component {
                         <InputDialog>
                             <AccountCircle />
                             <TextField placeholder="Usuário" value={this.state.name} onChange={(e) => this.onHandleChange("name", e.target.value)} />
-                        </InputDialog>                        
+                        </InputDialog>
                     </FormDialog>
                     <ActionDialog>
                         <Button variant="contained" color="primary" onClick={this.onHandleSubmit}>
                             Salvar
-                        </Button>     
-                    </ActionDialog>           
+                        </Button>
+                    </ActionDialog>
                 </SettingsDialog>
             </SettingsContainer>
         )

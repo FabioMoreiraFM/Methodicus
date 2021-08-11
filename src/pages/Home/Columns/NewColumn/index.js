@@ -1,13 +1,15 @@
 import { Component } from 'react'
 
-import { Container, NewColumnClickable, Title } from './style';
-import AddIcon from '@material-ui/icons/Add';
-import withContext from 'hoc/withContext';
 import TaskContext from 'context/tasks-context';
+import withContext from 'hoc/withContext';
+
+import AddIcon from '@material-ui/icons/Add';
+
+import { Container, NewColumnClickable, Title } from './style';
 
 class NewColumn extends Component {
     render() {
-        const {context} = this.props
+        const { context } = this.props
 
         return (
             <Container>

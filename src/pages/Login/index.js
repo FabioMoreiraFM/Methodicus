@@ -1,20 +1,23 @@
 import { Component } from 'react'
-import { Grid, Hidden} from '@material-ui/core'
 import { TabPanel, Tabs } from 'react-tabs'
 
-import { GridFundo, LoginContainer, Logo, TradeMark, LoginTitle, LoginTab, TabLabel, LoginTabList } from './styles'
 import img from 'assets/logo.png'
+import { withMediaQuery } from 'hoc/withMediaQuery'
+
+import { Grid, Hidden } from '@material-ui/core'
+
+import { GridFundo, LoginContainer, Logo, TradeMark, LoginTitle, LoginTab, TabLabel, LoginTabList } from './styles'
+
 import LoginPanel from './LoginPanel'
 import RecoverPasswordPanel from './RecoverPasswordPanel'
-import { withMediaQuery } from 'hoc/withMediaQuery'
 
 class Login extends Component {
     render() {
-        const matchesXS = this.props.matchesXS        
+        const matchesXS = this.props.matchesXS
         const gridFundoAlignItems = matchesXS ? "stretch" : "center";
         const gridFundoJustifyContent = matchesXS ? "flex-start" : "center";
 
-        return (            
+        return (
             <GridFundo container direction="column" justifyContent={gridFundoJustifyContent} alignItems={gridFundoAlignItems} >
                 <Grid item container direction="column" justifyContent="center" alignItems="center">
                     <Logo src={img} alt="logotipo da empresa" />

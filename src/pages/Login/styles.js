@@ -1,9 +1,11 @@
-import {Grid, Button} from '@material-ui/core'
-import {Alert} from '@material-ui/lab';
-import {Tab, TabList} from 'react-tabs'
-import styled from 'styled-components'
+import { Tab, TabList } from 'react-tabs'
 
 import theme from 'config/theme';
+import styled from 'styled-components'
+
+import { Grid, Button } from '@material-ui/core'
+import { Alert } from '@material-ui/lab';
+
 
 const blue = '#668FE1';
 const blackGrey = '#434040';

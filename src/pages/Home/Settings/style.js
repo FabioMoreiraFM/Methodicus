@@ -1,6 +1,7 @@
-import { Avatar } from '@material-ui/core'
-import styled from 'styled-components'
 import theme from 'config/theme';
+import styled from 'styled-components'
+
+import { Avatar } from '@material-ui/core'
 
 export const SettingsContainer = styled.div`
     flex-grow: 1;

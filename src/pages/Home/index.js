@@ -1,9 +1,12 @@
 import { Component } from 'react'
-import Header from './Header';
-import { LeftBackground, RightBackground, HomeContainer } from './styles';
-import rightBackground from 'assets/rightBackground.jpg'
+
 import leftBackground from 'assets/leftBackground.jpg'
+import rightBackground from 'assets/rightBackground.jpg'
 import Routes from 'routes/homeRoute';
+
+import { LeftBackground, RightBackground, HomeContainer } from './styles';
+
+import Header from './Header';
 
 
 class Home extends Component {

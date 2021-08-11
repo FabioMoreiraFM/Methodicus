@@ -1,10 +1,13 @@
+import AuthContext from 'context/auth-context';
+import withContext from 'hoc/withContext';
+
+import { Avatar, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import Popover from '@material-ui/core/Popover';
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { ExitToApp, Settings } from '@material-ui/icons';
+
 import { Name, NameContainer, ProfileContainer } from './style';
-import withContext from 'hoc/withContext';
-import AuthContext from 'context/auth-context';
+
 
 const useStyles = makeStyles((theme) => ({
   popover: {
@@ -16,34 +19,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProfilePopover (props) {
+function ProfilePopover(props) {
   const username = props.context.state.name
   const classes = useStyles();
-  
+
   const goTo = (path) => {
     return props.history.push(path)
   }
 
   const menus = [
-      ['Configurações', <Settings />, () => goTo('/home/settings')],
-      ['Sair', <ExitToApp />, () => goTo('/login')]   
+    ['Configurações', <Settings key={0} />, () => goTo('/home/settings')],
+    ['Sair', <ExitToApp key={1} />, () => goTo('/login')]
   ]
 
   const list = () => (
-      <div
-        role="presentation"
-      >
-        <List component="nav">
-          {menus.map((menu, index) => (
-            <ListItem button key={menu[0]} onClick={menu[2]}>
-              <ListItemIcon>{menu[1]}</ListItemIcon>
-              <ListItemText primary={menu[0]} />
-            </ListItem>
-          ))}
-        </List>
-      </div>
+    <div
+      role="presentation"
+    >
+      <List component="nav">
+        {menus.map((menu) => (
+          <ListItem button key={menu[0]} onClick={menu[2]}>
+            <ListItemIcon>{menu[1]}</ListItemIcon>
+            <ListItemText primary={menu[0]} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
   )
-  
+
   const getFirstName = () => {
     return username.split(' ')[0]
   }
@@ -63,36 +66,36 @@ function ProfilePopover (props) {
     return avatarName
   }
 
-  return (      
-      <Popover
-        id="mouse-over-popover"
-        className={classes.popover}
-        classes={{
-          paper: classes.paper,
-        }}
-        open={props.open}
-        anchorEl={props.anchorEl}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        disableRestoreFocus
-        PaperProps={{onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave}}
-      >
-        <ProfileContainer>
-          <Avatar>{getAvatarName()}</Avatar>
-          <NameContainer>
-            <Name>{getFirstName()}</Name>
-            <Name>{getSurName()}</Name>
-          </NameContainer>
-        </ProfileContainer>
-        <Divider variant="middle" />
-        {list()}
-      </Popover>
+  return (
+    <Popover
+      id="mouse-over-popover"
+      className={classes.popover}
+      classes={{
+        paper: classes.paper,
+      }}
+      open={props.open}
+      anchorEl={props.anchorEl}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'center',
+      }}
+      disableRestoreFocus
+      PaperProps={{ onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave }}
+    >
+      <ProfileContainer>
+        <Avatar>{getAvatarName()}</Avatar>
+        <NameContainer>
+          <Name>{getFirstName()}</Name>
+          <Name>{getSurName()}</Name>
+        </NameContainer>
+      </ProfileContainer>
+      <Divider variant="middle" />
+      {list()}
+    </Popover>
   );
 }
 
