@@ -34,4 +34,5 @@ export const StyledLogoLink = styled(Link)`
     flex-grow: 1;
     display: flex;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 `
