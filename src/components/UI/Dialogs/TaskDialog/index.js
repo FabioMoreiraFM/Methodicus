@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
+import { withSnackbar } from 'notistack';
 
 import { DialogTitle, Divider } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
@@ -11,9 +12,6 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 import { InputContainer, DialogActions, ActionButton, StyledTextField } from './style';
-
-
-
 
 class TaskDialog extends Component {
 
@@ -39,11 +37,13 @@ class TaskDialog extends Component {
       newTask.additionalContent = true
     }
 
+    this.props.enqueueSnackbar('Tarefa editada com sucesso!', { variant: 'success' })
     this.props.context.onEditTask(newTask)
     this.props.handleClose()
   }
 
   onDeleteTask = () => {
+    this.props.enqueueSnackbar('Tarefa excluída com sucesso!', { variant: 'success' })
     this.props.context.onDeleteTask(this.state.id, this.props.columnId)
   }
 
@@ -107,4 +107,7 @@ class TaskDialog extends Component {
   }
 }
 
-export default withContext(TaskContext)(TaskDialog);
+export default
+  withSnackbar(
+    withContext(TaskContext)(TaskDialog)
+  );

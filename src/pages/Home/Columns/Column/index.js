@@ -4,6 +4,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { default as Options } from 'components/UI/ButtonWithPopover';
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
+import { withSnackbar } from 'notistack';
 
 import { ClickAwayListener } from '@material-ui/core';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -12,15 +13,13 @@ import OptionsPopover from './ColumnPopovers/OptionsPopover';
 import { Container, TaskList, Title, NewTaskContainer, HeaderContainer, RenameTextField } from './style';
 import Task from './Task';
 
-
-
 class Column extends Component {
     state = {
         editColumnNameActive: false
     }
 
-
     handleEditColumnName = () => {
+        this.props.enqueueSnackbar('Coluna renomeada com sucesso.', { variant: 'success' })
         this.setState({ editColumnNameActive: false })
     }
 
@@ -95,4 +94,6 @@ class Column extends Component {
     }
 }
 
-export default withContext(TaskContext)(Column);
+export default withSnackbar(
+    withContext(TaskContext)(Column)
+);

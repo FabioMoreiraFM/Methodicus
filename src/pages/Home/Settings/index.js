@@ -3,6 +3,7 @@ import { Component } from 'react';
 
 import AuthContext from 'context/auth-context';
 import withContext from 'hoc/withContext';
+import { withSnackbar } from 'notistack';
 
 import { Button, TextField } from '@material-ui/core';
 import { AccountCircle, Email } from '@material-ui/icons';
@@ -26,6 +27,7 @@ class Settings extends Component {
     }
 
     onHandleSubmit = () => {
+        this.props.enqueueSnackbar('Perfil de usuário editado com sucesso!', { variant: 'success' })
         this.props.context.onEditUser(this.state.username, this.state.name)
     }
 
@@ -82,4 +84,6 @@ class Settings extends Component {
     }
 }
 
-export default withContext(AuthContext)(Settings)
+export default withSnackbar(
+    withContext(AuthContext)(Settings)
+)

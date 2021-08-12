@@ -1,14 +1,21 @@
+import { withSnackbar } from 'notistack';
+
 import { MenuItem, Popper, Grow, Paper, ClickAwayListener, MenuList, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Delete, Edit } from '@material-ui/icons';
 
-export default function OptionsPopover(props) {
+function OptionsPopover(props) {
   const onRenameColumn = () => {
     props.onRenameColumn();
     props.onExit();
   }
 
+  const onDeleteColumn = (columnId) => {
+    props.enqueueSnackbar('Coluna removida com sucesso.', { variant: 'success' })
+    props.onDeleteColumn(columnId)
+  }
+
   const menus = [
-    [<Delete key={0} />, 'Apagar Coluna', props.onDeleteColumn],
+    [<Delete key={0} />, 'Apagar Coluna', onDeleteColumn],
     [<Edit key={1} />, 'Renomear', onRenameColumn]
   ]
 
@@ -36,3 +43,5 @@ export default function OptionsPopover(props) {
     </Popper>
   );
 }
+
+export default withSnackbar(OptionsPopover)
