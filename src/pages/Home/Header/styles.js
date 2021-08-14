@@ -5,11 +5,9 @@ import styled from 'styled-components'
 
 import { AppBar } from '@material-ui/core';
 
-const blue = '#668FE1';
-
 export const TradeMark = styled.h1`
     font-family: 'Pacifico';
-    color: ${blue};
+    color: var(--trademark-color);
     font-size: 2rem;
     margin: 0 0 0 0.5rem;
     font-weight: 300;    
@@ -21,7 +19,7 @@ export const Logo = styled.img`
 `
 
 export const StyledAppBar = styled(AppBar)`
-    background: #263388; 
+    background: var(--appbar); 
     ${theme.breakpoints.down("xs")} {
         max-height: 3.5rem;
         position: fixed;

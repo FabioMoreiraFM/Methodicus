@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     margin: 1rem;
-    border: 1px solid lightgrey;
-    background-color: #F6F7F9;
+    border: 1px solid var(--light-grey);
+    background-color: var(--task-dialog-background);
     min-width: 14rem;
     height: 3rem;
     border-radius: 6px;
@@ -29,6 +29,6 @@ export const NewColumnClickable = styled(Link)`
     padding-left: 1rem;
 
     &:hover {
-        background-color: lightgrey;
+        background-color: var(--light-grey);
     }
 `

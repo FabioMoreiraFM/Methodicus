@@ -9,12 +9,12 @@ export const SettingsContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: gray;
+    color: var(--gray);
 `
 
 export const SettingsDialog = styled.div`
     background-color: white;    
-    border: 1px solid lightgray;
+    border: 1px solid var(--light-grey);
     border-radius: 10px;
     width: 40rem;
     height: 35rem;

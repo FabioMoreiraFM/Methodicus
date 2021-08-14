@@ -6,8 +6,8 @@ import { TextField } from '@material-ui/core'
 
 export const Container = styled.div`
     margin: 1rem;
-    border: 1px solid lightgrey;
-    background-color: #F6F7F9;
+    border: 1px solid var(--light-grey);
+    background-color: var(--task-dialog-background);
     min-width: 16rem;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 6px;
@@ -30,7 +30,7 @@ export const Title = styled.h3`
 
 export const TaskList = styled.div`
     padding: 0.5rem;
-    background-color: ${props => (props.isDraggingOver ? 'lightgrey' : '#F6F7F9')};
+    background-color: ${props => (props.isDraggingOver ? 'var(--light-grey)' : "var(--task-dialog-background)")};
     transition: background-color 0.2s ease;
     flex-grow: 1;
     min-height: 2rem;
@@ -42,14 +42,14 @@ export const TaskList = styled.div`
 export const NewTaskContainer = styled(Link)`
     min-height: 2.5rem;
     text-decoration: none;
-    color: black;
+    color: var(--black);
 
     display: flex;
     align-items: center;
     padding-left: 0.7rem;
 
     &:hover {
-        background-color: lightgrey;
+        background-color: var(--light-grey);
     }
 `
 

@@ -1,16 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+:root {
+  --tab-color: #3949AB;
+  --login-title: #434040;
+  --trademark-color: #668FE1;
+  --drawer-menu-button: #D5D6D8;
+  --appbar: #263388;
+  --task-dialog-background: #F6F7F9;
+  --white: white;
+  --gray: gray;
+  --light-grey: lightgrey;
+  --black: black;
+}
+
 .react-tabs__tab--selected span{
-    color: #3949AB;
-    border-bottom: 3px solid #3949AB;   
+    color: var(--tab-color);
+    border-bottom: 3px solid var(--tab-color);   
     padding-bottom: 5px; 
 }
 
 @media screen and (max-width: 600px) {
   .react-tabs__tab--selected span{
-    color: #668FE1;
-    border-bottom: 3px solid #668FE1; 
+    color: var(--trademark-color);
+    border-bottom: 3px solid var(--trademark-color); 
     padding-bottom: 5px;
   }
 }

@@ -2,7 +2,7 @@ import theme from 'config/theme';
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    border: 1px solid lightgrey;
+    border: 1px solid var(--light-grey);
     padding: 8px;
     margin-bottom: 8px;
     border-radius: 4px;

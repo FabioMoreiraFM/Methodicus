@@ -7,21 +7,17 @@ import { Grid, Button } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 
 
-const blue = '#668FE1';
-const blackGrey = '#434040';
-const blueButton = '#3949AB';
-
 export const GridFundo = styled(Grid)`
-    background-color: ${blueButton};
+    background-color: var(--tab-color);
     min-height: 100vh;
 `
 
 export const LoginContainer = styled(Grid)`
-    background-color: white;
+    background-color: var(--white);
     padding: 2rem 5rem;
     margin-bottom: 2rem;
     ${theme.breakpoints.down("xs")} {
-        background-color: ${blueButton};
+        background-color: var(--tab-color);
         padding: 0 1rem;
     }
 `
@@ -36,7 +32,7 @@ export const Logo = styled.img`
 `
 export const TradeMark = styled.h1`
     font-family: 'Pacifico';
-    color: ${blue};
+    color: var(--trademark-color);
     font-size: 3rem;
     margin-top: 0;
     font-weight: 300;
@@ -47,7 +43,7 @@ export const TradeMark = styled.h1`
 `
 export const LoginTitle = styled.h2`
     font-weight: 600;
-    color: ${blackGrey};
+    color: var(--login-title);
     margin-top: 0;    
     text-align: center;
     font-size: 1.7rem;
@@ -55,13 +51,13 @@ export const LoginTitle = styled.h2`
 `
 
 export const LoginButton = styled(Button)`
-    background-color: ${blueButton};
-    color: white;
+    background-color: var(--tab-color);
+    color: var(--white);
     font-size: 1rem;
     border-radius: 2px;
     font-weight: bold;
     &:hover {
-        background-color: ${blueButton};
+        background-color: var(--tab-color);
         opacity: 0.7;
     }
 `
@@ -83,19 +79,19 @@ export const LoginTab = styled(Tab)`
 
 export const TabLabel = styled.span`
     font-size: 1.2rem;
-    color: ${blackGrey};  
+    color: var(--login-title);  
     border-radius: 3px;
     &:hover {
-        color: ${blueButton};
-        border-bottom: 3px solid ${blueButton};  
+        color: var(--tab-color);
+        border-bottom: 3px solid var(--tab-color);  
         padding-bottom: 5px;              
     }
     ${theme.breakpoints.down("xs")} {
         font-size: 0.9rem;
-        color: white;
+        color: var(--white);
         &:hover {
-            color: ${blue};
-            border-bottom: 3px solid ${blue};
+            color: var(--trademark-color);
+            border-bottom: 3px solid var(--trademark-color);
             font-weight: 600;
             padding-bottom: 5px;
         }
