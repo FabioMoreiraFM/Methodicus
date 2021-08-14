@@ -22,12 +22,16 @@ class TaskDialog extends Component {
       id: this.props.task.id,
       content: this.props.task.content,
       description: this.props.task.description,
-      additionalContent: false
+      additionalContent: false,
+      inputStatus: {
+        contentError: false,
+        contentMessage: ''
+      }
     }
   }
 
   onHandleChange = (field, value) => {
-    this.setState({ [field]: value })
+    this.setState({ [field]: value, inputStatus: { contentError: false, contentMessage: '' } })
   }
 
   onHandleClose = () => {
@@ -37,9 +41,21 @@ class TaskDialog extends Component {
       newTask.additionalContent = true
     }
 
-    this.props.enqueueSnackbar('Tarefa editada com sucesso!', { variant: 'success' })
-    this.props.context.onEditTask(newTask)
-    this.props.handleClose()
+    if (newTask.content === '') {
+      newTask.inputStatus.contentError = true
+      newTask.inputStatus.contentMessage = 'Campo de preenchimento obrigatório!'
+    }
+
+    if (!newTask.inputStatus.contentError) {
+      delete newTask.inputStatus
+      this.props.enqueueSnackbar('Tarefa editada com sucesso!', { variant: 'success' })
+      this.props.context.onEditTask(newTask)
+      this.props.handleClose()
+    } else {
+      this.props.enqueueSnackbar('Erro ao salvar edição!', { variant: 'error' })
+      this.setState(newTask)
+    }
+
   }
 
   onDeleteTask = () => {
@@ -54,6 +70,8 @@ class TaskDialog extends Component {
   }
 
   render() {
+    const { contentError, contentMessage } = this.state.inputStatus
+
     return (
       <div>
         <Dialog open={this.props.open} onClose={this.onHandleClose} aria-labelledby="form-dialog-title">
@@ -71,6 +89,8 @@ class TaskDialog extends Component {
                 multiline
                 maxRows={4}
                 placeholder="Descreva a tarefa."
+                error={contentError}
+                helperText={contentMessage}
               />
             </InputContainer>
 
