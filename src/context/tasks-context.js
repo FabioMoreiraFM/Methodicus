@@ -24,7 +24,7 @@ const initialData = {
 }
 
 const TaskContext = React.createContext({
-    initialData,
+    state: initialData,
     onRenameColumn: () => { },
     onDeleteColumn: () => { },
     onClickNewTask: () => { },

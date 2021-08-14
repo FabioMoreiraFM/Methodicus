@@ -32,7 +32,7 @@ class HeaderDrawer extends Component {
   state = {
     open: false,
     menus: [
-      ['Notificações', <NotificationsNoneIcon key={0} />, () => this.goTo('/home/settings')],
+      ['Notificações', <NotificationsNoneIcon key={0} />, () => this.goTo('/home/notifications')],
       ['Perfil', <AccountCircle key={1} />, () => this.goTo('/home/settings')],
       ['Sair', <ExitToApp key={2} />, () => this.goTo('/login')]
     ]

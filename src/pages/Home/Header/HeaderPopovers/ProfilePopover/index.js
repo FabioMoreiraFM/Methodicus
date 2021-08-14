@@ -83,6 +83,7 @@ function ProfilePopover(props) {
         vertical: 'top',
         horizontal: 'center',
       }}
+      onClose={props.handlePopoverClose}
       disableRestoreFocus
       PaperProps={{ onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave }}
     >

@@ -19,3 +19,8 @@ export const NameContainer = styled.div`
 export const Name = styled.span`
     font-size: 1rem;
 `
+
+export const NotificationContainer = styled.div`
+    max-width: 20rem;
+    padding: 0.5rem;
+`
