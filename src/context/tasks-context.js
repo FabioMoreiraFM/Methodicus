@@ -3,10 +3,10 @@ import { Component } from 'react'
 
 const initialData = {
     tasks: {
-        'task-1': { id: 'task-1', content: "Take out garbage", description: "", additionalContent: false },
-        'task-2': { id: 'task-2', content: "Watch my favorite show", description: "", additionalContent: false },
-        'task-3': { id: 'task-3', content: "Charge my phone", description: "", additionalContent: false },
-        'task-4': { id: 'task-4', content: "Cook dinner", description: "", additionalContent: false }
+        'task-1': { id: 'task-1', content: "Take out garbage", description: "", additionalContent: false, startDate: new Date(), endDate: new Date() },
+        'task-2': { id: 'task-2', content: "Watch my favorite show", description: "", additionalContent: false, startDate: new Date(), endDate: new Date() },
+        'task-3': { id: 'task-3', content: "Charge my phone", description: "", additionalContent: false, startDate: new Date(), endDate: new Date() },
+        'task-4': { id: 'task-4', content: "Cook dinner", description: "", additionalContent: false, startDate: new Date(), endDate: new Date() }
     },
     columns: {
         'column-1': {

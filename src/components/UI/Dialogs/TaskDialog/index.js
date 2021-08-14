@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import MaterialUIPickers from 'components/UI/DatePicker';
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
 import { withSnackbar } from 'notistack';
@@ -23,6 +24,8 @@ class TaskDialog extends Component {
       content: this.props.task.content,
       description: this.props.task.description,
       additionalContent: false,
+      startDate: this.props.task.startDate,
+      endDate: this.props.task.endDate,
       inputStatus: {
         contentError: false,
         contentMessage: ''
@@ -107,6 +110,13 @@ class TaskDialog extends Component {
                 multiline
                 maxRows={4}
               />
+            </InputContainer>
+
+            <InputContainer>
+              <MaterialUIPickers title="Data Início" date={this.state.startDate} onChange={this.onHandleChange} type="startDate" />
+            </InputContainer>
+            <InputContainer>
+              <MaterialUIPickers title="Data Prevista" date={this.state.endDate} onChange={this.onHandleChange} type="endDate" />
             </InputContainer>
           </DialogContent>
           <Divider variant="middle" />
