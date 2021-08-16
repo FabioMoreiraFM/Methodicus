@@ -25,16 +25,21 @@ function NotificationPopover(props) {
 
   const loadTaskNearEnd = () => {
     const { tasks } = props.context.state
-    const currentDate = new Date()
     let taskList = []
 
     Object.keys(tasks).forEach(key => {
       let task = tasks[key]
-      const endDatePlus3 = new Date(task.endDate)
-      endDatePlus3.setDate(endDatePlus3.getDate() + 3)
+      const currentDatePlus3 = new Date()
+      currentDatePlus3.setDate(currentDatePlus3.getDate() + 3)
+      currentDatePlus3.setHours(0, 0, 0, 0)
 
-      if (endDatePlus3 >= currentDate) {
-        taskList.push(task)
+      if (task.endDate) {
+        const taskDate = new Date(task.endDate.setHours(0, 0, 0, 0))
+        const currentDate = new Date().setHours(0, 0, 0, 0)
+
+        if (taskDate <= currentDatePlus3 && taskDate >= currentDate) {
+          taskList.push(task)
+        }
       }
     })
 
