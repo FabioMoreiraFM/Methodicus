@@ -14,7 +14,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <SnackbarProvider maxSnack={3}>
+        <SnackbarProvider maxSnack={3} autoHideDuration={1800}>
           <AuthContextProvider>
             <Routes />
           </AuthContextProvider>
