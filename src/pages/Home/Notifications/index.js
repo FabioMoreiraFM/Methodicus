@@ -3,6 +3,7 @@ import { Component } from 'react';
 
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
+import PropTypes from 'prop-types';
 
 import { Divider } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -13,8 +14,10 @@ class Notifications extends Component {
     constructor(props) {
         super(props)
 
+        const { context } = this.props
+
         this.state = {
-            tasks: this.props.context.state.tasks,
+            tasks: context.state.tasks,
         }
     }
 
@@ -65,3 +68,7 @@ class Notifications extends Component {
 }
 
 export default withContext(TaskContext)(Notifications)
+
+Notifications.propTypes = {
+    context: PropTypes.object
+}

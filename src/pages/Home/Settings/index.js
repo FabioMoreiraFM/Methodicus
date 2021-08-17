@@ -4,6 +4,7 @@ import { Component } from 'react';
 import AuthContext from 'context/auth-context';
 import withContext from 'hoc/withContext';
 import { withSnackbar } from 'notistack';
+import PropTypes from 'prop-types';
 
 import { Button, TextField } from '@material-ui/core';
 import { AccountCircle, Email } from '@material-ui/icons';
@@ -16,11 +17,13 @@ class Settings extends Component {
     constructor(props) {
         super(props)
 
+        const { context } = this.props
+
         this.state = {
-            username: this.props.context.state.username,
+            username: context.state.username,
             userError: false,
             userMessage: '',
-            name: this.props.context.state.name,
+            name: context.state.name,
             nameError: false,
             nameMessage: ''
         }
@@ -119,3 +122,8 @@ class Settings extends Component {
 export default withSnackbar(
     withContext(AuthContext)(Settings)
 )
+
+Settings.propTypes = {
+    context: PropTypes.object,
+    enqueueSnackbar: PropTypes.func
+}

@@ -3,6 +3,7 @@ import { TabPanel, Tabs } from 'react-tabs'
 
 import img from 'assets/logo.png'
 import { withMediaQuery } from 'hoc/withMediaQuery'
+import PropTypes from 'prop-types';
 
 import { Grid, Hidden } from '@material-ui/core'
 
@@ -13,7 +14,8 @@ import RecoverPasswordPanel from './RecoverPasswordPanel'
 
 class Login extends Component {
     render() {
-        const matchesXS = this.props.matchesXS
+        const { matchesXS, history } = this.props
+
         const gridFundoAlignItems = matchesXS ? "stretch" : "center";
         const gridFundoJustifyContent = matchesXS ? "flex-start" : "center";
 
@@ -44,7 +46,7 @@ class Login extends Component {
                                     </LoginTab>
                                 </LoginTabList>
                                 <TabPanel>
-                                    <LoginPanel history={this.props.history} />
+                                    <LoginPanel history={history} />
                                 </TabPanel>
                                 <TabPanel>
                                     <RecoverPasswordPanel />
@@ -62,3 +64,8 @@ class Login extends Component {
 }
 
 export default withMediaQuery([['matchesXS', theme => theme.breakpoints.down('xs')]])(Login)
+
+Login.propTypes = {
+    matchesXS: PropTypes.bool,
+    history: PropTypes.object
+}

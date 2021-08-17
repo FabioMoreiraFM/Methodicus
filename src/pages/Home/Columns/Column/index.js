@@ -5,6 +5,7 @@ import { default as Options } from 'components/UI/ButtonWithPopover';
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
 import { withSnackbar } from 'notistack';
+import PropTypes from 'prop-types';
 
 import { ClickAwayListener } from '@material-ui/core';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -24,13 +25,13 @@ class Column extends Component {
     }
 
     render() {
-        const { context } = this.props
+        const { context, column, index, tasks } = this.props
 
         const OptionsPopverWithProps = (props) => (
             <OptionsPopover
                 onDeleteColumn={context.onDeleteColumn}
                 onRenameColumn={() => this.setState({ editColumnNameActive: !this.state.editColumnNameActive })}
-                columnId={this.props.column.id}
+                columnId={column.id}
                 {...props}
             />
         )
@@ -39,13 +40,13 @@ class Column extends Component {
             <HeaderContainer>
                 {!this.state.editColumnNameActive &&
                     <Title {...provided.dragHandleProps}>
-                        {this.props.column.title}
+                        {column.title}
                     </Title>
                 }
                 {
                     this.state.editColumnNameActive &&
                     <ClickAwayListener onClickAway={this.handleEditColumnName}>
-                        <RenameTextField id="standard-basic" value={this.props.column.title} onChange={(e) => context.onRenameColumn(this.props.column.id, e.target.value)} InputLabelProps={{ shrink: false }} {...provided.dragHandleProps} />
+                        <RenameTextField id="standard-basic" value={column.title} onChange={(e) => context.onRenameColumn(column.id, e.target.value)} InputLabelProps={{ shrink: false }} {...provided.dragHandleProps} />
                     </ClickAwayListener>
                 }
                 <Options popover={OptionsPopverWithProps} onClick>
@@ -55,7 +56,7 @@ class Column extends Component {
         )
 
         const taskList = () => (
-            <Droppable droppableId={this.props.column.id}>
+            <Droppable droppableId={column.id}>
                 {
                     (provided, snapshot) => (
                         <TaskList
@@ -63,7 +64,7 @@ class Column extends Component {
                             {...provided.droppableProps}
                             isDraggingOver={snapshot.isDraggingOver}
                         >
-                            {this.props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} columnId={this.props.column.id} />)}
+                            {tasks.map((task, index) => <Task key={task.id} task={task} index={index} columnId={column.id} />)}
                             {provided.placeholder}
                         </TaskList>
                     )
@@ -72,13 +73,13 @@ class Column extends Component {
         )
 
         const footer = () => (
-            <NewTaskContainer to="/home" onClick={() => context.onClickNewTask(this.props.column.id)}>
+            <NewTaskContainer to="/home" onClick={() => context.onClickNewTask(column.id)}>
                 + Nova tarefa
             </NewTaskContainer>
         )
 
         return (
-            <Draggable draggableId={this.props.column.id} index={this.props.index}>
+            <Draggable draggableId={column.id} index={index}>
                 {(provided) => (
                     <Container
                         {...provided.draggableProps}
@@ -97,3 +98,11 @@ class Column extends Component {
 export default withSnackbar(
     withContext(TaskContext)(Column)
 );
+
+Column.propTypes = {
+    context: PropTypes.object,
+    enqueueSnackbar: PropTypes.func,
+    tasks: PropTypes.array,
+    column: PropTypes.object,
+    index: PropTypes.number
+}

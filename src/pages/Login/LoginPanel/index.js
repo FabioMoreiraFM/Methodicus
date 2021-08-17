@@ -2,6 +2,7 @@ import { Component } from "react";
 
 import AuthContext from "context/auth-context";
 import withContext from "hoc/withContext";
+import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core'
 
@@ -66,3 +67,8 @@ class LoginPanel extends Component {
 }
 
 export default withContext(AuthContext)(LoginPanel)
+
+LoginPanel.propTypes = {
+    context: PropTypes.object,
+    history: PropTypes.object
+}

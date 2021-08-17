@@ -2,6 +2,7 @@ import React from 'react';
 
 import img from 'assets/logo.png'
 import ButtonWithPopover from 'components/UI/ButtonWithPopover';
+import PropTypes from 'prop-types';
 
 import { Toolbar, Hidden } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
@@ -14,9 +15,11 @@ import NotificationPopover from "./HeaderPopovers/NotificationPopover";
 import ProfilePopover from "./HeaderPopovers/ProfilePopover";
 
 const Header = (props) => {
+    const { history } = props
+
     const ProfilePopoverWithProps = (otherProps) => (
         <ProfilePopover
-            history={props.history}
+            history={history}
             {...otherProps}
         />
     )
@@ -25,7 +28,7 @@ const Header = (props) => {
         <StyledAppBar position="static">
             <Toolbar>
                 <Hidden smUp>
-                    <HeaderDrawer history={props.history} />
+                    <HeaderDrawer history={history} />
                 </Hidden>
                 <StyledLogoLink to="/home/">
                     <Logo src={img} alt="logotipo da empresa" />
@@ -45,3 +48,7 @@ const Header = (props) => {
 }
 
 export default Header;
+
+Header.propTypes = {
+    history: PropTypes.object
+}

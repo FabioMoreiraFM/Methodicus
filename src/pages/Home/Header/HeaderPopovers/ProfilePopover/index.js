@@ -1,5 +1,6 @@
 import AuthContext from 'context/auth-context';
 import withContext from 'hoc/withContext';
+import PropTypes from 'prop-types';
 
 import { Avatar, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import Popover from '@material-ui/core/Popover';
@@ -20,11 +21,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ProfilePopover(props) {
-  const username = props.context.state.name
+  const { history, context, open, anchorEl, handlePopoverClose, onMouseEnter, onMouseLeave } = props
+
+  const username = context.state.name
   const classes = useStyles();
 
   const goTo = (path) => {
-    return props.history.push(path)
+    return history.push(path)
   }
 
   const menus = [
@@ -73,8 +76,8 @@ function ProfilePopover(props) {
       classes={{
         paper: classes.paper,
       }}
-      open={props.open}
-      anchorEl={props.anchorEl}
+      open={open}
+      anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'bottom',
         horizontal: 'left',
@@ -83,9 +86,9 @@ function ProfilePopover(props) {
         vertical: 'top',
         horizontal: 'center',
       }}
-      onClose={props.handlePopoverClose}
+      onClose={handlePopoverClose}
       disableRestoreFocus
-      PaperProps={{ onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave }}
+      PaperProps={{ onMouseEnter: onMouseEnter, onMouseLeave: onMouseLeave }}
     >
       <ProfileContainer>
         <Avatar>{getAvatarName()}</Avatar>
@@ -101,3 +104,13 @@ function ProfilePopover(props) {
 }
 
 export default withContext(AuthContext)(ProfilePopover);
+
+ProfilePopover.propTypes = {
+  history: PropTypes.object,
+  context: PropTypes.object,
+  open: PropTypes.bool,
+  anchorEl: PropTypes.object,
+  handlePopoverClose: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func
+}

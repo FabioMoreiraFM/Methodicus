@@ -3,6 +3,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
+import PropTypes from 'prop-types';
 
 import Column from './Column'
 import NewColumn from './NewColumn';
@@ -44,3 +45,7 @@ class Columns extends Component {
 }
 
 export default withContext(TaskContext)(Columns);
+
+Columns.propTypes = {
+    context: PropTypes.object
+}

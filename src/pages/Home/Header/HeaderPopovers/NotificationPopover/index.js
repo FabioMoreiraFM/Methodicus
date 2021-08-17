@@ -2,6 +2,7 @@ import React from 'react';
 
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
+import PropTypes from 'prop-types';
 
 import { Divider } from '@material-ui/core';
 import Popover from '@material-ui/core/Popover';
@@ -22,9 +23,10 @@ const useStyles = makeStyles((theme) => ({
 
 function NotificationPopover(props) {
   const classes = useStyles();
+  const { context, open, anchorEl, handlePopoverClose, onMouseEnter, onMouseLeave } = props
 
   const loadTaskNearEnd = () => {
-    const { tasks } = props.context.state
+    const { tasks } = context.state
     let taskList = []
 
     Object.keys(tasks).forEach(key => {
@@ -53,8 +55,8 @@ function NotificationPopover(props) {
       classes={{
         paper: classes.paper,
       }}
-      open={props.open}
-      anchorEl={props.anchorEl}
+      open={open}
+      anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'bottom',
         horizontal: 'left',
@@ -63,9 +65,9 @@ function NotificationPopover(props) {
         vertical: 'top',
         horizontal: 'center',
       }}
-      onClose={props.handlePopoverClose}
+      onClose={handlePopoverClose}
       disableRestoreFocus
-      PaperProps={{ onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave }}
+      PaperProps={{ onMouseEnter: onMouseEnter, onMouseLeave: onMouseLeave }}
     >
       {
         loadTaskNearEnd().map(task => (
@@ -87,3 +89,12 @@ function NotificationPopover(props) {
 }
 
 export default withContext(TaskContext)(NotificationPopover);
+
+NotificationPopover.propTypes = {
+  context: PropTypes.object,
+  open: PropTypes.bool,
+  anchorEl: PropTypes.object,
+  handlePopoverClose: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func
+}

@@ -1,19 +1,22 @@
 import 'date-fns';
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-export default function MaterialUIPickers(props) {
+export default function DatePicker(props) {
+    const { title, onChange, type, date } = props
 
-    const [selectedDate, setSelectedDate] = React.useState(props.date);
+    const [selectedDate, setSelectedDate] = React.useState(date);
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
-        props.onChange(props.type, date)
+        onChange(type, date)
     };
 
     return (
@@ -24,7 +27,7 @@ export default function MaterialUIPickers(props) {
                 format="dd/MM/yyyy"
                 margin="normal"
                 id="date-picker-inline"
-                label={props.title}
+                label={title}
                 value={selectedDate}
                 onChange={handleDateChange}
                 KeyboardButtonProps={{
@@ -33,4 +36,11 @@ export default function MaterialUIPickers(props) {
             />
         </MuiPickersUtilsProvider>
     );
+}
+
+DatePicker.propTypes = {
+    title: PropTypes.string,
+    onChange: PropTypes.func,
+    type: PropTypes.string,
+    date: PropTypes.instanceOf(Date)
 }

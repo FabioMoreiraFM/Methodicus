@@ -1,6 +1,8 @@
 import React from 'react'
 import { Component } from 'react'
 
+import PropTypes from 'prop-types';
+
 const initialData = {
     username: 'teste@teste.com',
     name: 'Usuário Teste'
@@ -22,13 +24,15 @@ export class AuthContextProvider extends Component {
     }
 
     render() {
+        const { children } = this.props
+
         return (
             <AuthContext.Provider value={{
                 state: this.state,
                 onEditUser: this.onEditUser
             }}
             >
-                {this.props.children}
+                {children}
             </AuthContext.Provider>
         )
     }
@@ -36,3 +40,7 @@ export class AuthContextProvider extends Component {
 }
 
 export default AuthContext
+
+AuthContextProvider.propTypes = {
+    children: PropTypes.node
+}

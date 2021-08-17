@@ -1,8 +1,12 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { HeaderIconButton } from "./style";
 
 const ButtonWithPopover = ({ popover: Popover, ...props }) => {
+  const { onMouseOver, onClick, buttoncolor, children } = props
+
   const [openedPopover, setOpenedPopover] = React.useState(false);
   const popoverAnchor = React.useRef(null);
 
@@ -24,12 +28,12 @@ const ButtonWithPopover = ({ popover: Popover, ...props }) => {
         ref={popoverAnchor}
         aria-owns={'mouse-over-popover'}
         aria-haspopup="true"
-        onMouseEnter={props.onMouseOver && handlePopoverOpen}
-        onMouseLeave={props.onMouseOver && handlePopoverClose}
-        onClick={props.onClick && handlePopoverOnClick}
-        buttoncolor={props.buttoncolor}
+        onMouseEnter={onMouseOver && handlePopoverOpen}
+        onMouseLeave={onMouseOver && handlePopoverClose}
+        onClick={onClick && handlePopoverOnClick}
+        buttoncolor={buttoncolor}
       >
-        {props.children}
+        {children}
       </HeaderIconButton>
       {Popover &&
         <Popover
@@ -45,3 +49,11 @@ const ButtonWithPopover = ({ popover: Popover, ...props }) => {
 }
 
 export default ButtonWithPopover;
+
+ButtonWithPopover.propTypes = {
+  onMouseOver: PropTypes.bool,
+  onClick: PropTypes.bool,
+  buttoncolor: PropTypes.string,
+  children: PropTypes.node,
+  popover: PropTypes.func
+}

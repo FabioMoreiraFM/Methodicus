@@ -1,6 +1,8 @@
 import React from 'react'
 import { Component } from 'react'
 
+import PropTypes from 'prop-types';
+
 const initialData = {
     tasks: {
         'task-1': { id: 'task-1', content: "Take out garbage", description: "", additionalContent: false, startDate: new Date(), endDate: new Date() },
@@ -226,6 +228,8 @@ export class TaskContextProvider extends Component {
     }
 
     render() {
+        const { children } = this.props
+
         return (
             <TaskContext.Provider value={{
                 state: this.state,
@@ -238,7 +242,7 @@ export class TaskContextProvider extends Component {
                 onDeleteTask: this.onDeleteTask
             }}
             >
-                {this.props.children}
+                {children}
             </TaskContext.Provider>
         )
     }
@@ -246,3 +250,7 @@ export class TaskContextProvider extends Component {
 }
 
 export default TaskContext
+
+TaskContextProvider.propTypes = {
+    children: PropTypes.node
+}

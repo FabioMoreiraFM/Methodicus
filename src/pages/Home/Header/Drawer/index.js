@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import PropTypes from 'prop-types';
+
 import { Drawer } from "@material-ui/core";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -84,3 +86,8 @@ class HeaderDrawer extends Component {
 }
 
 export default withStyles(styles)(HeaderDrawer);
+
+HeaderDrawer.propTypes = {
+  history: PropTypes.object,
+  classes: PropTypes.object
+}

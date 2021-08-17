@@ -2,6 +2,7 @@ import { Component } from 'react'
 
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
+import PropTypes from 'prop-types';
 
 import AddIcon from '@material-ui/icons/Add';
 
@@ -23,3 +24,7 @@ class NewColumn extends Component {
 }
 
 export default withContext(TaskContext)(NewColumn);
+
+NewColumn.propTypes = {
+    context: PropTypes.object
+}

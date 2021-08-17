@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { Draggable } from 'react-beautiful-dnd';
 
 import TaskDialog from 'components/UI/Dialogs/TaskDialog';
+import PropTypes from 'prop-types';
 
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
@@ -21,9 +22,11 @@ class Task extends Component {
     };
 
     render() {
+        const { task, index, columnId } = this.props
+
         return (
             <>
-                <Draggable draggableId={this.props.task.id} index={this.props.index}>
+                <Draggable draggableId={task.id} index={index}>
                     {(provided, snapshot) => (
                         <Container
                             {...provided.draggableProps}
@@ -32,11 +35,11 @@ class Task extends Component {
                             isDragging={snapshot.isDragging}
                             onClick={this.handleClickOpen}
                         >
-                            {this.props.task.content}
-                            {this.props.task.additionalContent &&
+                            {task.content}
+                            {task.additionalContent &&
                                 <IconContainer>
                                     {
-                                        this.props.task.description && <PlaylistAddIcon />
+                                        task.description && <PlaylistAddIcon />
                                     }
                                 </IconContainer>
                             }
@@ -44,7 +47,7 @@ class Task extends Component {
                     )}
                 </Draggable>
                 {this.state.open &&
-                    <TaskDialog open={this.state.open} handleClose={this.handleClose} task={this.props.task} columnId={this.props.columnId} />
+                    <TaskDialog open={this.state.open} handleClose={this.handleClose} task={task} columnId={columnId} />
                 }
             </>
         )
@@ -52,3 +55,9 @@ class Task extends Component {
 }
 
 export default Task;
+
+Task.propTypes = {
+    task: PropTypes.object,
+    index: PropTypes.number,
+    columnId: PropTypes.string
+}

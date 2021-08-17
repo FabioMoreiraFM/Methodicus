@@ -3,6 +3,7 @@ import { Component } from 'react'
 import leftBackground from 'assets/leftBackground.jpg'
 import rightBackground from 'assets/rightBackground.jpg'
 import { TaskContextProvider } from 'context/tasks-context';
+import PropTypes from 'prop-types';
 import Routes from 'routes/homeRoute';
 
 import { LeftBackground, RightBackground, HomeContainer } from './styles';
@@ -25,3 +26,7 @@ class Home extends Component {
 }
 
 export default Home;
+
+Home.propTypes = {
+    history: PropTypes.object
+}

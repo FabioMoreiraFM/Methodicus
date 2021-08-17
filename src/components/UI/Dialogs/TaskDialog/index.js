@@ -4,6 +4,7 @@ import MaterialUIPickers from 'components/UI/DatePicker';
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
 import { withSnackbar } from 'notistack';
+import PropTypes from 'prop-types';
 
 import { DialogTitle, Divider } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,13 +20,15 @@ class TaskDialog extends Component {
   constructor(props) {
     super(props)
 
+    const { task } = this.props
+
     this.state = {
-      id: this.props.task.id,
-      content: this.props.task.content,
-      description: this.props.task.description,
+      id: task.id,
+      content: task.content,
+      description: task.description,
       additionalContent: false,
-      startDate: this.props.task.startDate,
-      endDate: this.props.task.endDate,
+      startDate: task.startDate,
+      endDate: task.endDate,
       inputStatus: {
         contentError: false,
         contentMessage: ''
@@ -58,7 +61,6 @@ class TaskDialog extends Component {
       this.props.enqueueSnackbar('Erro ao salvar edição!', { variant: 'error' })
       this.setState(newTask)
     }
-
   }
 
   onDeleteTask = () => {
@@ -74,10 +76,11 @@ class TaskDialog extends Component {
 
   render() {
     const { contentError, contentMessage } = this.state.inputStatus
+    const { open } = this.props
 
     return (
       <div>
-        <Dialog open={this.props.open} onClose={this.onHandleClose} aria-labelledby="form-dialog-title">
+        <Dialog open={open} onClose={this.onHandleClose} aria-labelledby="form-dialog-title">
           <DialogTitle>Editar tarefa</DialogTitle>
           <DialogContent>
             <InputContainer>
@@ -141,3 +144,12 @@ export default
   withSnackbar(
     withContext(TaskContext)(TaskDialog)
   );
+
+TaskDialog.propTypes = {
+  task: PropTypes.object,
+  enqueueSnackbar: PropTypes.func,
+  context: PropTypes.object,
+  handleClose: PropTypes.func,
+  open: PropTypes.bool,
+  columnId: PropTypes.string
+}

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import PropTypes from 'prop-types';
+
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { IconButton, InputAdornment, TextField } from "@material-ui/core";
@@ -74,22 +76,22 @@ class LoginInput extends Component {
     }
 
     render() {
-        const { classes } = this.props
+        const { classes, id, placeholder, password, onChange, onClick, helperText, error } = this.props
 
         return (
             <TextField
-                id={this.props.id}
+                id={id}
                 className={classes.root}
                 inputRef={this.textInput}
                 fullWidth
-                label={this.props.placeholder}
+                label={placeholder}
                 variant="outlined"
-                type={this.props.password ? this.state.type : "text"}
-                onChange={this.props.onChange}
-                onClick={this.props.onClick}
-                helperText={this.props.helperText}
-                error={this.props.error}
-                InputProps={this.props.password && {
+                type={password ? this.state.type : "text"}
+                onChange={onChange}
+                onClick={onClick}
+                helperText={helperText}
+                error={error}
+                InputProps={password && {
                     endAdornment: (
                         <InputAdornment position="start">
                             <IconButton onClick={this.handleChangeEyeState} arial-label={this.state.ariaLabel}>
@@ -104,3 +106,14 @@ class LoginInput extends Component {
 }
 
 export default withStyles(styles)(LoginInput)
+
+LoginInput.propTypes = {
+    classes: PropTypes.object,
+    id: PropTypes.string,
+    placeholder: PropTypes.string,
+    password: PropTypes.bool,
+    onChange: PropTypes.func,
+    onClick: PropTypes.func,
+    helperText: PropTypes.string,
+    error: PropTypes.bool
+}
