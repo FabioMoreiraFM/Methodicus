@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const NOTIFICATIONS_LIMIT = 5
 
 function NotificationPopover(props) {
   const classes = useStyles();
@@ -28,19 +29,23 @@ function NotificationPopover(props) {
   const loadTaskNearEnd = () => {
     const { tasks } = context.state
     let taskList = []
+    let count = 0
 
     Object.keys(tasks).forEach(key => {
-      let task = tasks[key]
-      const currentDatePlus3 = new Date()
-      currentDatePlus3.setDate(currentDatePlus3.getDate() + 3)
-      currentDatePlus3.setHours(0, 0, 0, 0)
+      if (count != NOTIFICATIONS_LIMIT) {
+        let task = tasks[key]
+        const currentDatePlus3 = new Date()
+        currentDatePlus3.setDate(currentDatePlus3.getDate() + 3)
+        currentDatePlus3.setHours(0, 0, 0, 0)
 
-      if (task.endDate) {
-        const taskDate = new Date(task.endDate.setHours(0, 0, 0, 0))
-        const currentDate = new Date().setHours(0, 0, 0, 0)
+        if (task.endDate) {
+          const taskDate = new Date(task.endDate.setHours(0, 0, 0, 0))
+          const currentDate = new Date().setHours(0, 0, 0, 0)
 
-        if (taskDate <= currentDatePlus3 && taskDate >= currentDate) {
-          taskList.push(task)
+          if (taskDate <= currentDatePlus3 && taskDate >= currentDate) {
+            count++
+            taskList.push(task)
+          }
         }
       }
     })

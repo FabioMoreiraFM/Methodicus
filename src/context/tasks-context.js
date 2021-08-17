@@ -105,7 +105,10 @@ export class TaskContextProvider extends Component {
     onClickNewTask = (columnId) => {
         const newTask = {
             id: '' + Date.now(),
-            content: "New Task"
+            content: "New Task",
+            description: "",
+            startDate: new Date(),
+            endDate: new Date()
         }
 
         const newColumns = { ...this.state.columns[columnId] }
