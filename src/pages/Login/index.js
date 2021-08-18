@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import { Grid, Hidden } from '@material-ui/core'
 
-import { GridFundo, LoginContainer, Logo, TradeMark, LoginTitle, LoginTab, TabLabel, LoginTabList } from './styles'
+import { GridBackground, LoginContainer, Logo, TradeMark, LoginTitle, LoginTab, TabLabel, LoginTabList } from './styles'
 
 import LoginPanel from './LoginPanel'
 import RecoverPasswordPanel from './RecoverPasswordPanel'
@@ -16,11 +16,11 @@ class Login extends Component {
     render() {
         const { matchesXS, history } = this.props
 
-        const gridFundoAlignItems = matchesXS ? "stretch" : "center";
-        const gridFundoJustifyContent = matchesXS ? "flex-start" : "center";
+        const gridBackgroundAlignItems = matchesXS ? "stretch" : "center";
+        const gridBackgroundJustifyContent = matchesXS ? "flex-start" : "center";
 
         return (
-            <GridFundo container direction="column" justifyContent={gridFundoJustifyContent} alignItems={gridFundoAlignItems} >
+            <GridBackground container direction="column" justifyContent={gridBackgroundJustifyContent} alignItems={gridBackgroundAlignItems} >
                 <Grid item container direction="column" justifyContent="center" alignItems="center">
                     <Logo src={img} alt="logotipo da empresa" />
                     <TradeMark>Methodicus</TradeMark>
@@ -58,7 +58,7 @@ class Login extends Component {
                         </Grid>
                     </Grid>
                 </LoginContainer>
-            </GridFundo>
+            </GridBackground>
         )
     }
 }

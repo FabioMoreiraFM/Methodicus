@@ -53,13 +53,32 @@ class LoginPanel extends Component {
         return (
             <Grid item container direction="column" spacing={3}>
                 <Grid item>
-                    <LoginInput id="loginUser" error={this.state.userError} helperText={this.state.userMessage} fullWidth placeholder="Usuário" variant="outlined" onChange={(e) => this.handleOnChange("user", e.target.value)} onClick={() => this.onClickClearError("userError", "userMessage")} />
+                    <LoginInput id="loginUser"
+                        error={this.state.userError}
+                        helperText={this.state.userMessage}
+                        fullWidth placeholder="Usuário"
+                        variant="outlined"
+                        onChange={(e) => this.handleOnChange("user", e.target.value)}
+                        onClick={() => this.onClickClearError("userError", "userMessage")} />
                 </Grid>
                 <Grid item>
-                    <LoginInput id="loginPassword" error={this.state.passwordError} helperText={this.state.passwordMessage} password placeholder="Senha" onChange={(e) => this.handleOnChange("password", e.target.value)} onClick={() => this.onClickClearError("passwordError", "passwordMessage")} />
+                    <LoginInput
+                        id="loginPassword"
+                        error={this.state.passwordError}
+                        helperText={this.state.passwordMessage}
+                        password
+                        placeholder="Senha"
+                        onChange={(e) => this.handleOnChange("password", e.target.value)}
+                        onClick={() => this.onClickClearError("passwordError", "passwordMessage")} />
                 </Grid>
                 <Grid item>
-                    <LoginButton onClick={this.onHandleSubmit} arial-label="Entrar" fullWidth variant="outlined">ENTRAR</LoginButton>
+                    <LoginButton
+                        onClick={this.onHandleSubmit}
+                        arial-label="Entrar"
+                        fullWidth
+                        variant="outlined">
+                        ENTRAR
+                    </LoginButton>
                 </Grid>
             </Grid>
         )

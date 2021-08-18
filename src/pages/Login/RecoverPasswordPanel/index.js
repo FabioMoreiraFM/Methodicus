@@ -63,20 +63,48 @@ export default class RecoverPasswordPanel extends Component {
         return (
             <Grid item container direction="column" spacing={3}>
                 <Grid item>
-                    <LoginInput id="recoverUser" error={this.state.userError} helperText={this.state.userMessage} fullWidth placeholder="Usuário" variant="outlined" onChange={(e) => this.handleOnChange("user", e.target.value)} onClick={() => this.onClickClearError("userError", "userMessage")} />
+                    <LoginInput id="recoverUser"
+                        error={this.state.userError}
+                        helperText={this.state.userMessage}
+                        fullWidth placeholder="Usuário"
+                        variant="outlined"
+                        onChange={(e) => this.handleOnChange("user", e.target.value)}
+                        onClick={() => this.onClickClearError("userError", "userMessage")} />
                 </Grid>
                 <Grid item>
-                    <LoginInput id="recoverPassword" error={this.state.passwordError} helperText={this.state.passwordMessage} password placeholder="Senha" onChange={(e) => this.handleOnChange("password", e.target.value)} onClick={() => this.onClickClearError("passwordError", "passwordMessage")} />
+                    <LoginInput
+                        id="recoverPassword"
+                        error={this.state.passwordError}
+                        helperText={this.state.passwordMessage}
+                        password
+                        placeholder="Senha"
+                        onChange={(e) => this.handleOnChange("password", e.target.value)}
+                        onClick={() => this.onClickClearError("passwordError", "passwordMessage")} />
                 </Grid>
                 <Grid item>
-                    <LoginInput id="recoverPasswordConfirm" error={this.state.confirmPasswordError} helperText={this.state.confirmPasswordMessage} password placeholder="Confirmar Senha" onChange={(e) => this.handleOnChange("confirmPassword", e.target.value)} onClick={() => this.onClickClearError("confirmPasswordError", "confirmPasswordMessage")} />
+                    <LoginInput
+                        id="recoverPasswordConfirm"
+                        error={this.state.confirmPasswordError}
+                        helperText={this.state.confirmPasswordMessage}
+                        password
+                        placeholder="Confirmar Senha"
+                        onChange={(e) => this.handleOnChange("confirmPassword", e.target.value)}
+                        onClick={() => this.onClickClearError("confirmPasswordError", "confirmPasswordMessage")} />
                 </Grid>
                 <Grid item>
-                    <LoginButton onClick={this.onHandleSubmit} arial-label="Entrar" fullWidth variant="outlined">ENTRAR</LoginButton>
+                    <LoginButton
+                        onClick={this.onHandleSubmit}
+                        arial-label="Entrar"
+                        fullWidth
+                        variant="outlined">
+                        ENTRAR
+                    </LoginButton>
                 </Grid>
                 <Grid item>
                     {this.state.success &&
-                        <SuccessAlert severity="success"><AlertTitle>Sucesso!</AlertTitle> {"Você receberia um e-mail agora. Entre com qualquer informação na aba \"Entrar\" para acessar o sistema."}</SuccessAlert>
+                        <SuccessAlert severity="success">
+                            <AlertTitle>Sucesso!</AlertTitle> {"Você receberia um e-mail agora. Entre com qualquer informação na aba \"Entrar\" para acessar o sistema."}
+                        </SuccessAlert>
                     }
                 </Grid>
             </Grid>

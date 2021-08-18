@@ -7,7 +7,7 @@ import { Grid, Button } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 
 
-export const GridFundo = styled(Grid)`
+export const GridBackground = styled(Grid)`
     background-color: var(--tab-color);
     min-height: 100vh;
 `
@@ -59,6 +59,9 @@ export const LoginButton = styled(Button)`
     &:hover {
         background-color: var(--tab-color);
         opacity: 0.7;
+    }
+    ${theme.breakpoints.down("xs")} {
+        background-color: var(--trademark-color);
     }
 `
 export const LoginTab = styled(Tab)`

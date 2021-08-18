@@ -68,15 +68,17 @@ class LoginInput extends Component {
     }
 
     handleChangeEyeState = () => {
-        if (this.state.type === "password") {
-            this.setState({ type: "text", icon: faEye, ariaLabel: "Ocultar Senha" })
-        } else {
-            this.setState({ type: "password", icon: faEyeSlash, ariaLabel: "Mostrar Senha" })
+        let type = {
+            "password": { type: "text", icon: faEye, ariaLabel: "Ocultar Senha" },
+            "text": { type: "password", icon: faEyeSlash, ariaLabel: "Mostrar Senha" }
         }
+
+        this.setState(type[this.state.type])
     }
 
     render() {
         const { classes, id, placeholder, password, onChange, onClick, helperText, error } = this.props
+        const textFieldType = password ? this.state.type : "text"
 
         return (
             <TextField
@@ -86,7 +88,7 @@ class LoginInput extends Component {
                 fullWidth
                 label={placeholder}
                 variant="outlined"
-                type={password ? this.state.type : "text"}
+                type={textFieldType}
                 onChange={onChange}
                 onClick={onClick}
                 helperText={helperText}
