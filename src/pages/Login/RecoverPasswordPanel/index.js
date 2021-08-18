@@ -7,7 +7,7 @@ import { LoginButton, SuccessAlert } from "../styles";
 
 import LoginInput from '../LoginInput'
 
-export default class RecoverPasswordPanel extends Component {
+class RecoverPasswordPanel extends Component {
     state = {
         user: "",
         password: "",
@@ -111,3 +111,5 @@ export default class RecoverPasswordPanel extends Component {
         )
     }
 }
+
+export default RecoverPasswordPanel
