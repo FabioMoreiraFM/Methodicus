@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { MenuItem, Popper, Grow, Paper, ClickAwayListener, MenuList, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Delete, Edit } from '@material-ui/icons';
 
-function OptionsPopover(props) {
+const OptionsPopover = (props) => {
 
   const { onRenameColumn, enqueueSnackbar, onDeleteColumn, open, anchorEl, onExit, columnId } = props
 

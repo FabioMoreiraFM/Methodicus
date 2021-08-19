@@ -44,6 +44,17 @@ class Notifications extends Component {
         return taskList
     }
 
+    getTaskListNearEnd = () => {
+        return this.loadTaskNearEnd().map(task => (
+            <React.Fragment key={`${task.id}@`}>
+                <NotificationContainer key={task.id}>
+                    {task.content} está próxima da data prevista ({task.endDate.toLocaleDateString('pt-BR')}).
+                </NotificationContainer>
+                <Divider key={`${task.id}%`} />
+            </React.Fragment>
+        ))
+    }
+
     render() {
         return (
             <NotificationsContainer>
@@ -56,14 +67,7 @@ class Notifications extends Component {
                     </HeaderDialog>
                     <NotificationDialog>
                         {
-                            this.loadTaskNearEnd().map(task => (
-                                <React.Fragment key={task.id + "@"}>
-                                    <NotificationContainer key={task.id}>
-                                        {task.content} está próxima da data prevista ({task.endDate.toLocaleDateString('pt-BR')}).
-                                    </NotificationContainer>
-                                    <Divider key={task.id + '%'} />
-                                </React.Fragment>
-                            ))
+                            this.getTaskListNearEnd()
                         }
                     </NotificationDialog>
                 </NotificationsDialog>

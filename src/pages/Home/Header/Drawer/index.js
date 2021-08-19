@@ -50,7 +50,7 @@ class HeaderDrawer extends Component {
     }
 
     this.setState({ open: isOpen });
-  };
+  }
 
   list = () => (
     <div

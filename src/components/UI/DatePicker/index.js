@@ -1,5 +1,6 @@
 import 'date-fns';
 import React from 'react';
+import { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -9,34 +10,45 @@ import {
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-export default function DatePicker(props) {
-    const { title, onChange, type, date } = props
+class DatePicker extends Component {
+    constructor(props) {
+        super(props)
 
-    const [selectedDate, setSelectedDate] = React.useState(date);
+        this.state = {
+            selectedDate: this.props.date
+        }
+    }
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
+    handleDateChange = (date) => {
+        const { onChange, type } = this.props
+
+        this.setState({ selectedDate: date });
         onChange(type, date)
     };
 
-    return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="dd/MM/yyyy"
-                margin="normal"
-                id="date-picker-inline"
-                label={title}
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                }}
-            />
-        </MuiPickersUtilsProvider>
-    );
+    render() {
+        const { title } = this.props
+        return (
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="dd/MM/yyyy"
+                    margin="normal"
+                    id="date-picker-inline"
+                    label={title}
+                    value={this.state.selectedDate}
+                    onChange={this.handleDateChange}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                    }}
+                />
+            </MuiPickersUtilsProvider>
+        );
+    }
 }
+
+export default DatePicker
 
 DatePicker.propTypes = {
     title: PropTypes.string,

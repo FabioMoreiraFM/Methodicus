@@ -34,6 +34,8 @@ class Settings extends Component {
     }
 
     onHandleSubmit = () => {
+        const { enqueueSnackbar, context } = this.props
+
         let newState = { ...this.state }
 
         if (newState.username === '') {
@@ -49,10 +51,10 @@ class Settings extends Component {
         this.setState(newState)
 
         if (!newState.userError && !newState.nameError) {
-            this.props.enqueueSnackbar('Perfil de usuário editado com sucesso!', { variant: 'success' })
-            this.props.context.onEditUser(this.state.username, this.state.name)
+            enqueueSnackbar('Perfil de usuário editado com sucesso!', { variant: 'success' })
+            context.onEditUser(this.state.username, this.state.name)
         } else {
-            this.props.enqueueSnackbar('Falha ao editar perfil de usuário!', { variant: 'error' })
+            enqueueSnackbar('Falha ao editar perfil de usuário!', { variant: 'error' })
         }
     }
 
@@ -67,15 +69,17 @@ class Settings extends Component {
     getAvatarName = () => {
         let avatarName = ''
         try {
-            avatarName = this.getFirstName()[0] + this.getSurName()[0]
+            avatarName = `${this.getFirstName()[0]} ${this.getSurName()[0]}`
         } catch (e) {
-            avatarName = this.getFirstName()[0]
+            avatarName = `${this.getFirstName()[0]}`
         }
 
         return avatarName
     }
 
     render() {
+        const { username, userError, userMessage, name, nameError, nameMessage } = this.state
+
         return (
             <SettingsContainer>
                 <SettingsDialog>
@@ -93,18 +97,18 @@ class Settings extends Component {
                             <Email />
                             <TextField
                                 placeholder="E-mail"
-                                value={this.state.username}
-                                error={this.state.userError}
-                                helperText={this.state.userMessage}
+                                value={username}
+                                error={userError}
+                                helperText={userMessage}
                                 onChange={(e) => this.onHandleChange("username", e.target.value, "userError", "userMessage")} />
                         </InputDialog>
                         <InputDialog>
                             <AccountCircle />
                             <TextField
                                 placeholder="Usuário"
-                                value={this.state.name}
-                                error={this.state.nameError}
-                                helperText={this.state.nameMessage}
+                                value={name}
+                                error={nameError}
+                                helperText={nameMessage}
                                 onChange={(e) => this.onHandleChange("name", e.target.value, "nameError", "nameMessage")} />
                         </InputDialog>
                     </FormDialog>

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NOTIFICATIONS_LIMIT = 5
 
-function NotificationPopover(props) {
+const NotificationPopover = (props) => {
   const classes = useStyles();
   const { context, open, anchorEl, handlePopoverClose, onMouseEnter, onMouseLeave } = props
 
@@ -76,11 +76,11 @@ function NotificationPopover(props) {
     >
       {
         loadTaskNearEnd().map(task => (
-          <React.Fragment key={task.id + "@"}>
+          <React.Fragment key={`${task.id}@`}>
             <NotificationContainer key={task.id}>
               {task.content} está próxima da data prevista ({task.endDate.toLocaleDateString('pt-BR')}).
             </NotificationContainer>
-            <Divider key={task.id + '%'} />
+            <Divider key={`${task.id}%`} />
           </React.Fragment>
         ))
       }

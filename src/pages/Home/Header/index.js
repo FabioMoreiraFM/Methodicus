@@ -47,7 +47,7 @@ const Header = (props) => {
     )
 }
 
-export default Header;
+export default Header
 
 Header.propTypes = {
     history: PropTypes.object

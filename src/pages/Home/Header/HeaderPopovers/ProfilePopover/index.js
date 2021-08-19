@@ -9,7 +9,6 @@ import { ExitToApp, Settings } from '@material-ui/icons';
 
 import { Name, NameContainer, ProfileContainer } from './style';
 
-
 const useStyles = makeStyles((theme) => ({
   popover: {
     pointerEvents: 'none'
@@ -20,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProfilePopover(props) {
+const ProfilePopover = (props) => {
   const { history, context, open, anchorEl, handlePopoverClose, onMouseEnter, onMouseLeave } = props
 
   const username = context.state.name
@@ -61,9 +60,9 @@ function ProfilePopover(props) {
   const getAvatarName = () => {
     let avatarName = ''
     try {
-      avatarName = getFirstName()[0] + getSurName()[0]
+      avatarName = `${getFirstName()[0]} ${getSurName()[0]}`
     } catch (e) {
-      avatarName = getFirstName()[0]
+      avatarName = `${getFirstName()[0]}`
     }
 
     return avatarName
