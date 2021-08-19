@@ -4,11 +4,14 @@ import { Component } from 'react';
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
 import PropTypes from 'prop-types';
+import * as TaskUtils from 'utils/tasks';
 
 import { Divider } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
 
 import { HeaderDialog, NotificationsContainer, NotificationsDialog, DialogTitle, NotificationDialog, NotificationContainer } from './styles';
+
+const NOTIFICATIONS_LIMIT = 999
 
 class Notifications extends Component {
     constructor(props) {
@@ -23,25 +26,7 @@ class Notifications extends Component {
 
     loadTaskNearEnd = () => {
         const { tasks } = this.state
-        let taskList = []
-
-        Object.keys(tasks).forEach(key => {
-            let task = tasks[key]
-            const currentDatePlus3 = new Date()
-            currentDatePlus3.setDate(currentDatePlus3.getDate() + 3)
-            currentDatePlus3.setHours(0, 0, 0, 0)
-
-            if (task.endDate) {
-                const taskDate = new Date(task.endDate.setHours(0, 0, 0, 0))
-                const currentDate = new Date().setHours(0, 0, 0, 0)
-
-                if (taskDate <= currentDatePlus3 && taskDate >= currentDate) {
-                    taskList.push(task)
-                }
-            }
-        })
-
-        return taskList
+        return TaskUtils.loadTaskNearEnd(tasks, NOTIFICATIONS_LIMIT)
     }
 
     getTaskListNearEnd = () => {

@@ -3,6 +3,7 @@ import React from 'react';
 import TaskContext from 'context/tasks-context';
 import withContext from 'hoc/withContext';
 import PropTypes from 'prop-types';
+import * as TaskUtils from 'utils/tasks';
 
 import { Divider } from '@material-ui/core';
 import Popover from '@material-ui/core/Popover';
@@ -28,29 +29,7 @@ const NotificationPopover = (props) => {
 
   const loadTaskNearEnd = () => {
     const { tasks } = context.state
-    let taskList = []
-    let count = 0
-
-    Object.keys(tasks).forEach(key => {
-      if (count != NOTIFICATIONS_LIMIT) {
-        let task = tasks[key]
-        const currentDatePlus3 = new Date()
-        currentDatePlus3.setDate(currentDatePlus3.getDate() + 3)
-        currentDatePlus3.setHours(0, 0, 0, 0)
-
-        if (task.endDate) {
-          const taskDate = new Date(task.endDate.setHours(0, 0, 0, 0))
-          const currentDate = new Date().setHours(0, 0, 0, 0)
-
-          if (taskDate <= currentDatePlus3 && taskDate >= currentDate) {
-            count++
-            taskList.push(task)
-          }
-        }
-      }
-    })
-
-    return taskList
+    return TaskUtils.loadTaskNearEnd(tasks, NOTIFICATIONS_LIMIT)
   }
 
   return (
