@@ -35,10 +35,10 @@ const Header = (props) => {
                     <TradeMark>Methodicus</TradeMark>
                 </StyledLogoLink>
                 <Hidden xsDown>
-                    <ButtonWithPopover popover={NotificationPopover} onMouseOver buttoncolor="#D5D6D8">
+                    <ButtonWithPopover popover={NotificationPopover} teste handleType="onMouseOver" buttoncolor="#D5D6D8">
                         <NotificationsNoneIcon />
                     </ButtonWithPopover>
-                    <ButtonWithPopover popover={ProfilePopoverWithProps} onMouseOver buttoncolor="#D5D6D8">
+                    <ButtonWithPopover popover={ProfilePopoverWithProps} handleType="onMouseOver" buttoncolor="#D5D6D8">
                         <AccountCircle />
                     </ButtonWithPopover>
                 </Hidden>

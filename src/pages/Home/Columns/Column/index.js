@@ -49,7 +49,7 @@ class Column extends Component {
                         <RenameTextField id="standard-basic" value={column.title} onChange={(e) => context.onRenameColumn(column.id, e.target.value)} InputLabelProps={{ shrink: false }} {...provided.dragHandleProps} />
                     </ClickAwayListener>
                 }
-                <Options popover={OptionsPopverWithProps} onClick>
+                <Options popover={OptionsPopverWithProps} handleType="onClick">
                     <MoreHorizIcon />
                 </Options>
             </HeaderContainer>
