@@ -105,7 +105,7 @@ export class TaskContextProvider extends Component {
     onClickNewTask = (columnId) => {
         const newTask = {
             id: `${Date.now()}`,
-            content: "New Task",
+            content: "Nova Tarefa",
             description: "",
             startDate: new Date(),
             endDate: new Date()
@@ -133,7 +133,7 @@ export class TaskContextProvider extends Component {
     onClickCreateColumn = () => {
         const newColumn = {
             id: `${Date.now()}`,
-            title: 'New Column',
+            title: 'Nova Coluna',
             taskIds: []
         }
 
