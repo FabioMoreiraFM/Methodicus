@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import { Grid, Hidden } from '@material-ui/core'
 
-import { GridBackground, LoginContainer, Logo, TradeMark, LoginTitle, LoginTab, TabLabel, LoginTabList } from './styles'
+import { GridBackground, LoginContainer, Logo, TradeMark, LoginTitle, LoginTab, TabLabel, LoginTabList, MadeBy, CopyrightIcon } from './styles'
 
 import LoginPanel from './LoginPanel'
 import RecoverPasswordPanel from './RecoverPasswordPanel'
@@ -58,6 +58,9 @@ class Login extends Component {
                         </Grid>
                     </Grid>
                 </LoginContainer>
+                <MadeBy>
+                    <CopyrightIcon /> Fabio Moreira, todos os direitos reservados. <a href="https://github.com/FabioMoreiraFM/Tesouraria-Pessoal">Créditos das imagens.</a>
+                </MadeBy>
             </GridBackground>
         )
     }

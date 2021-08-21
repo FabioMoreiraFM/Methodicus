@@ -4,6 +4,7 @@ import theme from 'config/theme';
 import styled from 'styled-components'
 
 import { Grid, Button } from '@material-ui/core'
+import { Copyright } from '@material-ui/icons';
 import { Alert } from '@material-ui/lab';
 
 
@@ -111,4 +112,25 @@ export const LoginTabList = styled(TabList)`
 
 export const SuccessAlert = styled(Alert)`
     max-width: 31rem;
+`
+
+export const MadeBy = styled.div`
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+
+    text-align: center;
+
+    a {
+        text-decoration: none;
+        color: lightgrey;
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+`
+
+export const CopyrightIcon = styled(Copyright)`
+    font-size: 18px;
+    vertical-align: bottom;
 `
