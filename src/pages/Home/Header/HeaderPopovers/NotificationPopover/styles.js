@@ -7,9 +7,9 @@ export const NotificationContainer = styled.div`
     padding: 0.5rem;
 `
 export const MoreNotificationsContainer = styled.div`
-    padding: 0.5rem;
+    padding: 0.8rem 0.5rem;
     &:hover {
-        background-color: var(--light-grey)
+        background-color: var(--hover-more-button);
     }
 `
 

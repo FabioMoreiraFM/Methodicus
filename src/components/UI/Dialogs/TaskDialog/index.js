@@ -6,7 +6,7 @@ import withContext from 'hoc/withContext';
 import { withSnackbar } from 'notistack';
 import PropTypes from 'prop-types';
 
-import { DialogTitle, Divider } from '@material-ui/core';
+import { DialogTitle, Divider, Hidden } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -79,8 +79,8 @@ class TaskDialog extends Component {
     const { open } = this.props
 
     return (
-      <div>
-        <Dialog open={open} onClose={this.onHandleClose} aria-labelledby="form-dialog-title">
+      <>
+        <Dialog open={open} onClose={this.onHandleClose} fullWidth maxWidth="md" aria-labelledby="form-dialog-title">
           <DialogTitle>Editar tarefa</DialogTitle>
           <DialogContent>
             <InputContainer>
@@ -93,10 +93,11 @@ class TaskDialog extends Component {
                 onKeyDown={this.preventNewLine}
                 onChange={(e) => this.onHandleChange("content", e.target.value)}
                 multiline
-                maxRows={4}
+                maxRows={6}
                 placeholder="Descreva a tarefa."
                 error={contentError}
                 helperText={contentMessage}
+                fullWidth
               />
             </InputContainer>
 
@@ -111,16 +112,27 @@ class TaskDialog extends Component {
                 onKeyDown={this.preventNewLine}
                 onChange={(e) => this.onHandleChange("description", e.target.value)}
                 multiline
-                maxRows={4}
+                maxRows={8}
+                fullWidth
               />
             </InputContainer>
 
-            <InputContainer>
-              <MaterialUIPickers title="Data Início" date={this.state.startDate} onChange={this.onHandleChange} type="startDate" />
-            </InputContainer>
-            <InputContainer>
-              <MaterialUIPickers title="Data Prevista" date={this.state.endDate} onChange={this.onHandleChange} type="endDate" />
-            </InputContainer>
+            <Hidden smUp>
+              <InputContainer>
+                <MaterialUIPickers title="Data Início" date={this.state.startDate} onChange={this.onHandleChange} type="startDate" />
+              </InputContainer>
+              <InputContainer>
+                <MaterialUIPickers title="Data Prevista" date={this.state.endDate} onChange={this.onHandleChange} type="endDate" />
+              </InputContainer>
+            </Hidden>
+
+            <Hidden xsDown>
+              <InputContainer justifyCenter>
+                <MaterialUIPickers title="Data Início" date={this.state.startDate} onChange={this.onHandleChange} type="startDate" />
+                <MaterialUIPickers title="Data Prevista" date={this.state.endDate} onChange={this.onHandleChange} type="endDate" />
+              </InputContainer>
+            </Hidden>
+
           </DialogContent>
           <Divider variant="middle" />
           <DialogTitle>Ações</DialogTitle>
@@ -135,7 +147,7 @@ class TaskDialog extends Component {
             </ActionButton>
           </DialogActions>
         </Dialog>
-      </div>
+      </>
     )
   }
 }

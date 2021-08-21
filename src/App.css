@@ -12,6 +12,7 @@
   --gray: gray;
   --light-grey: lightgrey;
   --black: black;
+  --hover-more-button: #e6e6e6; 
 }
 
 .react-tabs__tab--selected span{

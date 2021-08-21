@@ -5,12 +5,21 @@ import { Button, TextField } from '@material-ui/core'
 
 export const InputContainer = styled.div`
     display: flex;
-    padding: 1rem 0;
-    justify-content: space-evenly;
-    min-width: 30rem;
+    padding: 1rem 1rem;
+    justify-content: ${props => props.justifyCenter ? 'center' : null};
+    
+    svg {
+        margin-right: 0.5rem;
+    }
+    .MuiFormControl-root {
+        margin-right: 0.5rem;
+    }
+
     ${theme.breakpoints.down("xs")} {    
-        justify-content: flex-start;
-        min-width: 19rem;
+        padding: 1rem 0rem;
+        svg {
+            margin-right: 0rem;
+        }
     }
 `
 

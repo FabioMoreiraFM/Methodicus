@@ -49,7 +49,7 @@ export const NewTaskContainer = styled(Link)`
     padding-left: 0.7rem;
 
     &:hover {
-        background-color: var(--light-grey);
+        background-color: var(--hover-more-button);
     }
 `
 

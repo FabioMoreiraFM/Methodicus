@@ -29,6 +29,6 @@ export const NewColumnClickable = styled(Link)`
     padding-left: 1rem;
 
     &:hover {
-        background-color: var(--light-grey);
+        background-color: var(--hover-more-button);
     }
 `
