@@ -3,6 +3,14 @@
 Projeto feito em React para consolidar o conhecimento em Material-UI.
 Link: https://methodicus-cd696.web.app/
 
+Créditos das imagens:
+
+Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+
+ <a href="https://www.freepik.com/vectors/time">Time vector created by pikisuperstar - www.freepik.com</a> 
+
+ <a href="https://www.freepik.com/vectors/process">Process vector created by stories - www.freepik.com</a> 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
