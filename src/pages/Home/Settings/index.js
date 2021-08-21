@@ -5,6 +5,7 @@ import AuthContext from 'context/auth-context';
 import withContext from 'hoc/withContext';
 import { withSnackbar } from 'notistack';
 import PropTypes from 'prop-types';
+import * as FormUtils from 'utils/form';
 
 import { Button, TextField } from '@material-ui/core';
 import { AccountCircle, Email } from '@material-ui/icons';
@@ -43,16 +44,22 @@ class Settings extends Component {
             newState.userMessage = "Campo de preenchimento obrigatório!"
         }
 
+        if (!FormUtils.validateEmail(newState.username)) {
+            newState.userError = true
+            newState.userMessage = "E-mail incorreto."
+        }
+
         if (newState.name === '') {
             newState.nameError = true
             newState.nameMessage = "Campo de preenchimento obrigatório!"
         }
 
+        newState.name = FormUtils.removeWhiteSpaces(newState.name)
         this.setState(newState)
 
         if (!newState.userError && !newState.nameError) {
             enqueueSnackbar('Perfil de usuário editado com sucesso!', { variant: 'success' })
-            context.onEditUser(this.state.username, this.state.name)
+            context.onEditUser(newState.username, newState.name)
         } else {
             enqueueSnackbar('Falha ao editar perfil de usuário!', { variant: 'error' })
         }

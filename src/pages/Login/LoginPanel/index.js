@@ -3,10 +3,12 @@ import { Component } from "react";
 import AuthContext from "context/auth-context";
 import withContext from "hoc/withContext";
 import PropTypes from 'prop-types';
+import * as FormUtils from 'utils/form';
 
 import { Grid } from '@material-ui/core'
 
 import { LoginButton } from "../styles";
+
 
 import LoginInput from '../LoginInput'
 
@@ -37,6 +39,7 @@ class LoginPanel extends Component {
             newState.passwordMessage = "Campo de preenchimento obrigatório!"
         }
 
+        newState.user = FormUtils.removeWhiteSpaces(newState.user)
         this.setState(newState)
 
         if (!newState.userError && !newState.passwordError) {
