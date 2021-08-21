@@ -14,8 +14,8 @@ export const GridBackground = styled(Grid)`
 
 export const LoginContainer = styled(Grid)`
     background-color: var(--white);
-    padding: 2rem 5rem;
-    margin-bottom: 2rem;
+    padding: 1.5rem 5rem;
+    margin-bottom: 1.6rem;
     ${theme.breakpoints.down("xs")} {
         background-color: var(--tab-color);
         padding: 0 1rem;

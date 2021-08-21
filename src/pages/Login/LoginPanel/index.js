@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import * as FormUtils from 'utils/form';
 
 import { Grid } from '@material-ui/core'
+import { Alert } from "@material-ui/lab";
 
 import { LoginButton } from "../styles";
 
@@ -82,6 +83,11 @@ class LoginPanel extends Component {
                         variant="outlined">
                         ENTRAR
                     </LoginButton>
+                </Grid>
+                <Grid item>
+                    <Alert severity="info">
+                        Para testes, você pode entrar com qualquer informação.
+                    </Alert>
                 </Grid>
             </Grid>
         )

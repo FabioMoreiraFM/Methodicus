@@ -25,7 +25,7 @@ export const LeftBackground = styled.img`
     width: 34.5rem;
     opacity: 0.34;
     z-index: -1;
-    ${theme.breakpoints.down("xs")} {        
+    ${theme.breakpoints.down("md")} {        
         display: none;
     } 
 `

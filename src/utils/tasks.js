@@ -11,7 +11,13 @@ export const loadTaskNearEnd = (tasks, NOTIFICATIONS_LIMIT) => {
 
             if (task.endDate) {
                 const taskDate = DateUtils.addDays(task.endDate, 3)
-                const currentDate = new Date().setHours(0, 0, 0, 0)
+                const currentDate = new Date()
+                currentDate.setHours(0, 0, 0, 0)
+
+                console.log(limitDateThrowWarn)
+                console.log(taskDate)
+                console.log(currentDate)
+
 
                 if (taskDate <= limitDateThrowWarn && taskDate >= currentDate) {
                     count++
